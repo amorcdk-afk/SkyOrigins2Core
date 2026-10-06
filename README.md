@@ -4,5 +4,4 @@ Companion mod for the SkyOrigins 2 skyblock modpack (Minecraft Forge 1.20.1).
 
 ## License
 
-- **Code** is licensed under the [MIT License](LICENSE).
-- **Assets** (textures, models, sounds, language files, structures) are All Rights Reserved. See [LICENSE-ASSETS](LICENSE-ASSETS).
+All Rights Reserved, for both code and assets. You may play the mod and include the unmodified jar in a modpack; anything else needs permission. See [LICENSE](LICENSE).

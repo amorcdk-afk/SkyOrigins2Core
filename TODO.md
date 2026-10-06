@@ -4,7 +4,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 
 ## 0. Housekeeping
 - [x] Commit and push the `skyorigins2core` rename
-- [x] Pick a license: MIT for code, All Rights Reserved for assets (`LICENSE`, `LICENSE-ASSETS`, `mod_license`)
+- [x] Pick a license: All Rights Reserved for code and assets (`LICENSE`, `mod_license`)
 - [ ] Set the CurseForge project license to match when the mod is published
 - [ ] Before committing any code or art copied from other mods/tutorials, check its license allows it
 - [x] Remove the MDK example block, item, creative tab and demo config
