@@ -3,9 +3,9 @@
 Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it first" step before content work.
 
 ## 0. Housekeeping
-- [ ] Commit and push the `skyorigins2core` rename
+- [x] Commit and push the `skyorigins2core` rename
 - [ ] Pick a license and make `LICENSE` and `mod_license` in `gradle.properties` match (currently Unlicense vs "All Rights Reserved")
-- [ ] Remove the MDK example block, item and creative tab from `SkyOrigins2Core.java`
+- [x] Remove the MDK example block, item, creative tab and demo config
 - [ ] Run `.\gradlew.bat genIntellijRuns` (or `genEclipseRuns`) and confirm `runClient` launches
 - [ ] Decide the base modlist for 1.20.1 (Create, Mekanism, Botania, Ars Nouveau, Ex Nihilo: Sequentia, FTB Quests, KubeJS, Skyblock Builder, ...)
 
