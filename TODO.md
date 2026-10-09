@@ -8,8 +8,9 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [ ] Set the CurseForge project license to match when the mod is published
 - [ ] Before committing any code or art copied from other mods/tutorials, check its license allows it
 - [x] Remove the MDK example block, item, creative tab and demo config
-- [ ] Run `.\gradlew.bat genIntellijRuns` (or `genEclipseRuns`) and confirm `runClient` launches
-- [ ] Decide the base modlist for 1.20.1 (Create, Mekanism, Botania, Ars Nouveau, Ex Nihilo: Sequentia, FTB Quests, KubeJS, Skyblock Builder, ...)
+- [x] Run `.\gradlew.bat genIntellijRuns` (or `genEclipseRuns`) and confirm `runClient` launches
+- [x] Decide the base modlist for 1.20.1 — `MODLIST.md`, downloaded with `tools/download_mods.py`
+- [ ] Work through the open checks in `MODLIST.md` (team sync, all-mods launch test, sieve coverage)
 
 ## 1. Island Cores — GO WITH CHANGES
 - [ ] **Spawn test first:** one throwaway island + one custom biome on a LAN/dedicated server
