@@ -74,6 +74,10 @@ minecraft {
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
 
+            // The dev mods below use mixins, which need their refmaps remapped to development names
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
             mods {
                 "${mod_id}" {
                     source sourceSets.main
@@ -115,12 +119,23 @@ repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:flat_dir_resolver
-    // flatDir {
-    //     dir 'libs'
-    // }
+    // Mod jars downloaded by tools/download_mods.py, used as dev mods below
+    flatDir {
+        dir 'pack-mods'
+    }
 }
+
+// Mods loaded alongside ours in runClient/runServer/runGameTestServer, to build and test the Arcane-Tech
+// Bridge recipes. Each entry is a file-name prefix in pack-mods/ (git-ignored, filled by
+// tools/download_mods.py); missing jars are skipped, so the mod still builds without them.
+// Create is left out: its jar bundles Flywheel and Ponder, which fg.deobf can't remap inside the jar.
+def devMods = [
+        'kubejs-forge', 'rhino-forge', 'architectury',     // KubeJS recipe scripts
+        'exdeorum',                                         // sieving (Void Dust)
+        'Botania', 'Patchouli', 'curios-forge',             // mana infusion (Infused Alloy)
+        'Mekanism-', 'MekanismGenerators',                  // machines (Resonant Circuit)
+        'jei-1.20.1', 'mezz_config',                        // recipe viewer
+]
 
 dependencies {
     // Specify the version of Minecraft to use.
@@ -144,6 +159,20 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    // Dev mods: fg.deobf remaps each player jar to development names. flatDir finds "name:version" as name-version.jar,
+    // so split each file name at its last hyphen.
+    def packMods = file('pack-mods').listFiles()?.findAll { it.name.endsWith('.jar') } ?: []
+    devMods.each { prefix ->
+        def jar = packMods.find { it.name.startsWith(prefix) }
+        if (jar == null) {
+            logger.warn("Dev mod '${prefix}' not found in pack-mods/, skipping it")
+            return
+        }
+        def base = jar.name.substring(0, jar.name.length() - 4)
+        def cut = base.lastIndexOf('-')
+        runtimeOnly fg.deobf("devmods:${base.substring(0, cut)}:${base.substring(cut + 1)}")
+    }
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

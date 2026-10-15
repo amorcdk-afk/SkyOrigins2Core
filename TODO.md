@@ -36,7 +36,9 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 
 ## 3. Arcane-Tech Bridge — GO WITH CHANGES (tier 1 only)
 - [x] Register 3 items: Void Dust, Infused Alloy, Resonant Circuit (placeholder textures; tagged `forge:dusts/void`, `forge:ingots/infused_alloy`)
-- [ ] Add the tech/magic mods to the dev environment (`build.gradle`) so KubeJS recipes can be tested
+- [x] Add the tech/magic mods to the dev environment (`devMods` in `build.gradle`, jars from `pack-mods/`): KubeJS, Ex Deorum, Botania, Mekanism, JEI
+- [ ] Add Create to the dev environment (needs Flywheel and Ponder as separate dev dependencies)
+- [ ] First KubeJS recipes: Void Dust from sieving, Infused Alloy from a mana pool, Resonant Circuit from a Mekanism machine
 - [ ] 3–5 KubeJS crossover gates, each introduced by a quest
 - [ ] Playtest with one tech-only and one magic-only player; cut any gate taking the "wrong-side" player > ~15 min
 - [ ] Write down the Void Condenser's output rate vs. a sieve before building it
