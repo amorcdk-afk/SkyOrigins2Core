@@ -1,0 +1,10 @@
+{
+  "radius": 6,
+  "depth": 6,
+  "filler_depth": 2,
+  "surface": "minecraft:sand",
+  "filler": "minecraft:sand",
+  "base": "minecraft:sandstone",
+  "biome": "skyorigins2core:desert_isle",
+  "blocks_per_tick": 8
+}

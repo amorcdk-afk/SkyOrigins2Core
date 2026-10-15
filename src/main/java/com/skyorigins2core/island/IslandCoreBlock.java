@@ -12,20 +12,20 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-// A placed core grows the island named by islandId, then turns into the island's surface block
+// A placed core grows a random island from its pool (data/<ns>/island_pools/), then turns into the island's surface block
 public class IslandCoreBlock extends BaseEntityBlock
 {
-    private final ResourceLocation islandId;
+    private final ResourceLocation poolId;
 
-    public IslandCoreBlock(ResourceLocation islandId, Properties properties)
+    public IslandCoreBlock(ResourceLocation poolId, Properties properties)
     {
         super(properties);
-        this.islandId = islandId;
+        this.poolId = poolId;
     }
 
-    public ResourceLocation islandId()
+    public ResourceLocation poolId()
     {
-        return islandId;
+        return poolId;
     }
 
     @Override

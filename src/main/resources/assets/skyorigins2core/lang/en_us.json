@@ -1,5 +1,7 @@
 {
   "itemGroup.skyorigins2core": "SkyOrigins 2",
   "block.skyorigins2core.void_island_core": "Void Island Core",
-  "biome.skyorigins2core.void_isle": "Void Isle"
+  "biome.skyorigins2core.void_isle": "Void Isle",
+  "biome.skyorigins2core.desert_isle": "Desert Isle",
+  "biome.skyorigins2core.crust_isle": "Crimson Crust"
 }

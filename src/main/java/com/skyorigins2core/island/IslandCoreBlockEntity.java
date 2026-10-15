@@ -4,6 +4,7 @@ import com.skyorigins2core.SkyOrigins2Core;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -12,11 +13,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class IslandCoreBlockEntity extends BlockEntity
 {
+    // Which island this core is growing, picked once from its pool; saved so a reload can't change it
+    @Nullable
+    private ResourceLocation island;
     // How far through the island's placement plan this core has got; saved, so growth resumes after a reload
     private int progress;
     private List<IslandShape.Placement> plan;
@@ -34,10 +39,15 @@ public class IslandCoreBlockEntity extends BlockEntity
 
     private void grow(ServerLevel level, IslandCoreBlock block)
     {
-        IslandDefinition definition = IslandDefinitions.get(block.islandId());
+        if (island == null)
+        {
+            island = pickIsland(level, block.poolId());
+            setChanged();
+        }
+        IslandDefinition definition = island == null ? null : IslandDefinitions.get(island);
         if (definition == null)
         {
-            SkyOrigins2Core.LOGGER.error("Island core at {} has no island definition {}", worldPosition, block.islandId());
+            SkyOrigins2Core.LOGGER.error("Island core at {} has no island to grow (pool {}, island {})", worldPosition, block.poolId(), island);
             level.setBlockAndUpdate(worldPosition, Blocks.DIRT.defaultBlockState());
             return;
         }
@@ -73,6 +83,14 @@ public class IslandCoreBlockEntity extends BlockEntity
             finish(level, definition);
     }
 
+    // A core names a pool to pick from; if there's no pool by that name, it names a single island directly
+    @Nullable
+    private static ResourceLocation pickIsland(ServerLevel level, ResourceLocation poolId)
+    {
+        IslandPools.Pool pool = IslandPools.get(poolId);
+        return pool != null ? pool.pick(level.random) : poolId;
+    }
+
     private void finish(ServerLevel level, IslandDefinition definition)
     {
         BiomeStamper.stamp(level, worldPosition, definition);
@@ -86,6 +104,8 @@ public class IslandCoreBlockEntity extends BlockEntity
     protected void saveAdditional(CompoundTag tag)
     {
         super.saveAdditional(tag);
+        if (island != null)
+            tag.putString("Island", island.toString());
         tag.putInt("Progress", progress);
     }
 
@@ -93,6 +113,7 @@ public class IslandCoreBlockEntity extends BlockEntity
     public void load(CompoundTag tag)
     {
         super.load(tag);
+        island = tag.contains("Island") ? ResourceLocation.tryParse(tag.getString("Island")) : null;
         progress = tag.getInt("Progress");
     }
 }

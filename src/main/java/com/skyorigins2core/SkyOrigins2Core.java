@@ -5,6 +5,7 @@ import com.skyorigins2core.island.IslandCommands;
 import com.skyorigins2core.island.IslandCoreBlock;
 import com.skyorigins2core.island.IslandCoreBlockEntity;
 import com.skyorigins2core.island.IslandDefinitions;
+import com.skyorigins2core.island.IslandPools;
 import com.skyorigins2core.island.IslandSpawner;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -47,10 +48,10 @@ public class SkyOrigins2Core
     // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "skyorigins2core" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    // Grows the island defined in data/skyorigins2core/islands/void_island.json.
+    // Grows a random island from data/skyorigins2core/island_pools/void_island_core.json.
     // Unbreakable while growing, so it can't be picked back up to re-grow the same island for free.
     public static final RegistryObject<Block> VOID_ISLAND_CORE = BLOCKS.register("void_island_core",
-            () -> new IslandCoreBlock(ResourceLocation.fromNamespaceAndPath(MODID, "void_island"),
+            () -> new IslandCoreBlock(ResourceLocation.fromNamespaceAndPath(MODID, "void_island_core"),
                     BlockBehaviour.Properties.of()
                             .mapColor(MapColor.COLOR_PURPLE)
                             .strength(-1.0F, 3600000.0F)
@@ -81,7 +82,10 @@ public class SkyOrigins2Core
         CREATIVE_MODE_TABS.register(modEventBus);
 
         // Load island definitions from data packs on server start and /reload
-        MinecraftForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> event.addListener(new IslandDefinitions()));
+        MinecraftForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> {
+            event.addListener(new IslandDefinitions());
+            event.addListener(new IslandPools());
+        });
         MinecraftForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> IslandCommands.register(event.getDispatcher()));
         // Spawn mobs on grown islands, which vanilla spawning almost never reaches
         MinecraftForge.EVENT_BUS.addListener((TickEvent.LevelTickEvent event) -> {

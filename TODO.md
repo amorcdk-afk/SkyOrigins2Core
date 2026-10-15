@@ -17,7 +17,9 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
   - [x] Mobs actually spawn on a tiny void island (via `IslandSpawner`; tune rate/caps after more play)
   - [ ] Biome survives relog and chunk unload
   - [x] Clients see the biome change without rejoining
-- [x] Custom datapack biomes that list spawns directly — `void_isle` done; reef/crust isles later (vanilla biomes won't give guardians/blazes, those are structure spawns)
+- [x] Custom datapack biomes that list spawns directly — `void_isle`, `desert_isle`, `crust_isle` (blazes without a fortress); reef isle needs water placement first (guardians only spawn in water)
+- [x] Cores grow a random island from a weighted pool (`data/<ns>/island_pools/*.json`); Void Island Core: void ×2, desert ×1, crust ×1
+- [x] Islands grow bottom-up; sand/gravel on overhanging edges becomes the base block so it can't fall
 - [x] Fallback if spawn rates are too low: grown islands make their own spawn attempts (`IslandSpawner`) — needed, vanilla spawning didn't reach the island in testing
 - [x] Island Core block + JSON definition per island (`data/<ns>/islands/*.json`: shape, blocks, biome, speed)
 - [x] Growth spread over many ticks, with a lag cap (≤64 blocks/tick, default 8)

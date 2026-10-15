@@ -1,0 +1,10 @@
+{
+  "radius": 6,
+  "depth": 6,
+  "filler_depth": 2,
+  "surface": "minecraft:crimson_nylium",
+  "filler": "minecraft:netherrack",
+  "base": "minecraft:blackstone",
+  "biome": "skyorigins2core:crust_isle",
+  "blocks_per_tick": 8
+}
