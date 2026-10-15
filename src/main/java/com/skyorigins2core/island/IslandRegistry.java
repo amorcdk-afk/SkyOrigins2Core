@@ -35,6 +35,15 @@ public class IslandRegistry extends SavedData
     {
         islands.add(new Island(center.immutable(), radius));
         setDirty();
+        SkyOrigins2Core.LOGGER.info("Registered island at {} with radius {}", center.toShortString(), radius);
+    }
+
+    public int clear()
+    {
+        int removed = islands.size();
+        islands.clear();
+        setDirty();
+        return removed;
     }
 
     @Override

@@ -14,9 +14,9 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 
 ## 1. Island Cores — GO WITH CHANGES
 - [ ] **Spawn test first:** Void Island Core (`void_island` + `void_isle` biome) on a LAN/dedicated server
-  - [ ] Mobs actually spawn on a tiny void island at an acceptable rate
+  - [x] Mobs actually spawn on a tiny void island (via `IslandSpawner`; tune rate/caps after more play)
   - [ ] Biome survives relog and chunk unload
-  - [ ] Clients see the biome change without rejoining
+  - [x] Clients see the biome change without rejoining
 - [x] Custom datapack biomes that list spawns directly — `void_isle` done; reef/crust isles later (vanilla biomes won't give guardians/blazes, those are structure spawns)
 - [x] Fallback if spawn rates are too low: grown islands make their own spawn attempts (`IslandSpawner`) — needed, vanilla spawning didn't reach the island in testing
 - [x] Island Core block + JSON definition per island (`data/<ns>/islands/*.json`: shape, blocks, biome, speed)

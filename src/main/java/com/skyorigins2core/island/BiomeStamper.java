@@ -23,6 +23,8 @@ public final class BiomeStamper
 {
     // Mobs spawn in the air above the surface, so the biome has to cover that space too
     private static final int HEADROOM = 16;
+    // Size of one biome cell in blocks
+    private static final int CELL = 4;
 
     private BiomeStamper() {}
 
@@ -39,10 +41,15 @@ public final class BiomeStamper
         }
         Holder<Biome> islandBiome = biome.get();
 
-        int r = definition.radius() + 1;
+        // Biomes are stored per 4x4x4 cell, and the game's biome lookup can read a neighbouring cell
+        // ("biome fuzzing"), so cover every cell the island touches plus one more cell all round
+        int r = definition.radius() + CELL;
         BoundingBox area = new BoundingBox(
-                core.getX() - r, core.getY() - definition.depth(), core.getZ() - r,
-                core.getX() + r, core.getY() + HEADROOM, core.getZ() + r);
+                core.getX() - r, core.getY() - definition.depth() - CELL, core.getZ() - r,
+                core.getX() + r, core.getY() + HEADROOM + CELL, core.getZ() + r);
+        int minQx = QuartPos.fromBlock(area.minX()), maxQx = QuartPos.fromBlock(area.maxX());
+        int minQy = QuartPos.fromBlock(area.minY()), maxQy = QuartPos.fromBlock(area.maxY());
+        int minQz = QuartPos.fromBlock(area.minZ()), maxQz = QuartPos.fromBlock(area.maxZ());
 
         List<ChunkAccess> chunks = new ArrayList<>();
         for (int cx = SectionPos.blockToSectionCoord(area.minX()); cx <= SectionPos.blockToSectionCoord(area.maxX()); cx++)
@@ -58,7 +65,7 @@ public final class BiomeStamper
         for (ChunkAccess chunk : chunks)
         {
             chunk.fillBiomesFromNoise((qx, qy, qz, sampler) ->
-                    area.isInside(QuartPos.toBlock(qx), QuartPos.toBlock(qy), QuartPos.toBlock(qz))
+                    qx >= minQx && qx <= maxQx && qy >= minQy && qy <= maxQy && qz >= minQz && qz <= maxQz
                             ? islandBiome
                             : chunk.getNoiseBiome(qx, qy, qz),
                     level.getChunkSource().randomState().sampler());

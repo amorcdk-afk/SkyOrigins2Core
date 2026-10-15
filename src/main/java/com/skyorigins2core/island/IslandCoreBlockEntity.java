@@ -49,6 +49,11 @@ public class IslandCoreBlockEntity extends BlockEntity
         {
             IslandShape.Placement placement = plan.get(progress);
             BlockPos pos = placement.pos();
+            if (level.isOutsideBuildHeight(pos))
+            {
+                progress++; // below the world's floor or above its ceiling: skip, it can never be placed
+                continue;
+            }
             if (!level.isLoaded(pos))
                 break; // try again next tick rather than skipping blocks in unloaded chunks
             progress++;
