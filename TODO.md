@@ -13,15 +13,16 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [ ] Work through the open checks in `MODLIST.md` (team sync, all-mods launch test, sieve coverage)
 
 ## 1. Island Cores — GO WITH CHANGES
-- [ ] **Spawn test first:** one throwaway island + one custom biome on a LAN/dedicated server
+- [ ] **Spawn test first:** Void Island Core (`void_island` + `void_isle` biome) on a LAN/dedicated server
   - [ ] Mobs actually spawn on a tiny void island at an acceptable rate
   - [ ] Biome survives relog and chunk unload
   - [ ] Clients see the biome change without rejoining
-- [ ] Use custom datapack biomes (e.g. `skyorigins2core:reef_isle`) that list spawns directly — vanilla biomes won't give guardians/blazes (those are structure spawns)
+- [x] Custom datapack biomes that list spawns directly — `void_isle` done; reef/crust isles later (vanilla biomes won't give guardians/blazes, those are structure spawns)
 - [ ] Fallback if spawn rates are too low: core makes local spawn attempts on its own island
-- [ ] Island Core item + JSON definition per island (template, biome, loot)
-- [ ] Growth spread over many ticks, with a lag cap
-- [ ] Ship exactly 3 islands; cores cost processed materials
+- [x] Island Core block + JSON definition per island (`data/<ns>/islands/*.json`: shape, blocks, biome, speed)
+- [x] Growth spread over many ticks, with a lag cap (≤64 blocks/tick, default 8)
+- [ ] Hand-built island templates (NBT) instead of the procedural disc, once the shape is proven
+- [ ] Ship exactly 3 islands; cores cost processed materials (no recipe yet — creative tab / `/give` only)
 
 ## 2. Void Origins — GO WITH CHANGES
 - [ ] Classic default start + 1 new origin, built with Skyblock Builder templates, NBT, loot tables and quests (no custom Java)

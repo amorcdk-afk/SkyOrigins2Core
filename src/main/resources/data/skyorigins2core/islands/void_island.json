@@ -1,0 +1,10 @@
+{
+  "radius": 6,
+  "depth": 6,
+  "filler_depth": 2,
+  "surface": "minecraft:grass_block",
+  "filler": "minecraft:dirt",
+  "base": "minecraft:stone",
+  "biome": "skyorigins2core:void_isle",
+  "blocks_per_tick": 8
+}
