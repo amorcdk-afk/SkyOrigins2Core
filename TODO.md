@@ -38,7 +38,8 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Register 3 items: Void Dust, Infused Alloy, Resonant Circuit (placeholder textures; tagged `forge:dusts/void`, `forge:ingots/infused_alloy`)
 - [x] Add the tech/magic mods to the dev environment (`devMods` in `build.gradle`, jars from `pack-mods/`): KubeJS, Ex Deorum, Botania, Mekanism, JEI
 - [ ] Add Create to the dev environment (needs Flywheel and Ponder as separate dev dependencies)
-- [ ] First KubeJS recipes: Void Dust from sieving, Infused Alloy from a mana pool, Resonant Circuit from a Mekanism machine
+- [x] First KubeJS recipes (`kubejs/server_scripts/arcane_tech_bridge.js`): Void Dust from sieving dust (5–30% by mesh), Infused Alloy from a mana pool (3000 mana), Resonant Circuit from a Metallurgic Infuser (20 redstone)
+- [ ] Playtest the chain in game and tune the numbers
 - [ ] 3–5 KubeJS crossover gates, each introduced by a quest
 - [ ] Playtest with one tech-only and one magic-only player; cut any gate taking the "wrong-side" player > ~15 min
 - [ ] Write down the Void Condenser's output rate vs. a sieve before building it
