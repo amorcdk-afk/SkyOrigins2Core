@@ -2,8 +2,8 @@
   "parent": "minecraft:block/block",
   "textures": {
     "0": "skyorigins2core:block/void_condenser_casing",
-    "1": "skyorigins2core:block/void_condenser_top",
-    "2": "skyorigins2core:block/void_condenser_bottom",
+    "1": "skyorigins2core:block/void_condenser_bottom",
+    "2": "skyorigins2core:block/void_condenser_top",
     "3": "skyorigins2core:block/void_condenser_core",
     "particle": "skyorigins2core:block/void_condenser_casing"
   },
@@ -21,25 +21,6 @@
         16
       ],
       "faces": {
-        "down": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#2",
-          "cullface": "down"
-        },
-        "up": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#0"
-        },
         "north": {
           "uv": [
             0,
@@ -79,6 +60,25 @@
           ],
           "texture": "#0",
           "cullface": "west"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#1",
+          "cullface": "down"
         }
       }
     },
@@ -95,25 +95,6 @@
         16
       ],
       "faces": {
-        "up": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#1",
-          "cullface": "up"
-        },
-        "down": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#0"
-        },
         "north": {
           "uv": [
             0,
@@ -153,6 +134,25 @@
           ],
           "texture": "#0",
           "cullface": "west"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#2",
+          "cullface": "up"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
         }
       }
     },
@@ -381,24 +381,6 @@
         12
       ],
       "faces": {
-        "down": {
-          "uv": [
-            4,
-            4,
-            12,
-            12
-          ],
-          "texture": "#3"
-        },
-        "up": {
-          "uv": [
-            4,
-            4,
-            12,
-            12
-          ],
-          "texture": "#3"
-        },
         "north": {
           "uv": [
             4,
@@ -432,6 +414,24 @@
             5,
             12,
             11
+          ],
+          "texture": "#3"
+        },
+        "up": {
+          "uv": [
+            4,
+            4,
+            12,
+            12
+          ],
+          "texture": "#3"
+        },
+        "down": {
+          "uv": [
+            4,
+            4,
+            12,
+            12
           ],
           "texture": "#3"
         }

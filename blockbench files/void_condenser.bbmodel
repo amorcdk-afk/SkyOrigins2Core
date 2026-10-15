@@ -42,7 +42,7 @@
     8,
     8
    ],
-   "uuid": "7686eba6-eca3-42c9-a8f8-a252095fade1",
+   "uuid": "2ae623be-f8e4-4e68-bdde-4de7b629140f",
    "type": "cube",
    "faces": {
     "north": {
@@ -101,7 +101,7 @@
       16,
       16
      ],
-     "texture": 2,
+     "texture": 1,
      "cullface": "down"
     }
    }
@@ -130,7 +130,7 @@
     8,
     8
    ],
-   "uuid": "74aa0588-ada3-41e0-961f-e195bd6c39f8",
+   "uuid": "22703a43-08b5-44b4-9902-2dd2684f9ff9",
    "type": "cube",
    "faces": {
     "north": {
@@ -180,7 +180,7 @@
       16,
       16
      ],
-     "texture": 1,
+     "texture": 2,
      "cullface": "up"
     },
     "down": {
@@ -218,7 +218,7 @@
     8,
     8
    ],
-   "uuid": "dd5ce41c-52b3-416e-ac63-0210ca1068df",
+   "uuid": "c58a7938-3a45-4f19-a278-e3a08d78422f",
    "type": "cube",
    "faces": {
     "north": {
@@ -303,7 +303,7 @@
     8,
     8
    ],
-   "uuid": "13666be4-0471-4aa6-bca8-865b51ffa736",
+   "uuid": "68881eb0-e20d-44fa-91d2-8b934be26a9d",
    "type": "cube",
    "faces": {
     "north": {
@@ -388,7 +388,7 @@
     8,
     8
    ],
-   "uuid": "60dcdb72-3dae-49d3-bd8e-b15f7a557658",
+   "uuid": "dab05af6-17fa-450e-aaa1-c46f1ff5403b",
    "type": "cube",
    "faces": {
     "north": {
@@ -473,7 +473,7 @@
     8,
     8
    ],
-   "uuid": "84a10e9c-323f-443c-b42e-dbb4b5e560a6",
+   "uuid": "400787ad-2193-41f4-9946-a4c0a9bfb5e2",
    "type": "cube",
    "faces": {
     "north": {
@@ -558,7 +558,7 @@
     8,
     8
    ],
-   "uuid": "2fbd1094-b2e9-482c-98ef-95bdbab64b76",
+   "uuid": "fc524ae8-bd9b-4572-b666-0ba0c223e4d3",
    "type": "cube",
    "faces": {
     "north": {
@@ -619,13 +619,13 @@
   }
  ],
  "outliner": [
-  "7686eba6-eca3-42c9-a8f8-a252095fade1",
-  "74aa0588-ada3-41e0-961f-e195bd6c39f8",
-  "dd5ce41c-52b3-416e-ac63-0210ca1068df",
-  "13666be4-0471-4aa6-bca8-865b51ffa736",
-  "60dcdb72-3dae-49d3-bd8e-b15f7a557658",
-  "84a10e9c-323f-443c-b42e-dbb4b5e560a6",
-  "2fbd1094-b2e9-482c-98ef-95bdbab64b76"
+  "2ae623be-f8e4-4e68-bdde-4de7b629140f",
+  "22703a43-08b5-44b4-9902-2dd2684f9ff9",
+  "c58a7938-3a45-4f19-a278-e3a08d78422f",
+  "68881eb0-e20d-44fa-91d2-8b934be26a9d",
+  "dab05af6-17fa-450e-aaa1-c46f1ff5403b",
+  "400787ad-2193-41f4-9946-a4c0a9bfb5e2",
+  "fc524ae8-bd9b-4572-b666-0ba0c223e4d3"
  ],
  "textures": [
   {
@@ -639,7 +639,7 @@
    "visible": true,
    "mode": "bitmap",
    "saved": true,
-   "uuid": "641828ee-4c91-4017-9d7d-24e2dfc415e9",
+   "uuid": "5f3adef7-2384-497a-92e6-99d9ce55b8cc",
    "relative_path": "",
    "width": 16,
    "height": 16,
@@ -649,7 +649,7 @@
   },
   {
    "path": "",
-   "name": "void_condenser_top.png",
+   "name": "void_condenser_bottom.png",
    "folder": "block",
    "namespace": "skyorigins2core",
    "id": "1",
@@ -658,17 +658,17 @@
    "visible": true,
    "mode": "bitmap",
    "saved": true,
-   "uuid": "42389489-196f-499c-bae1-59317390fca2",
+   "uuid": "0006cdc9-aa85-48aa-944d-ccee932f88ee",
    "relative_path": "",
    "width": 16,
    "height": 16,
    "uv_width": 16,
    "uv_height": 16,
-   "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdElEQVR42mMQEpL4TwlmABFhYUkkYysrF1QDenqmgQWJwSC1amp6qAYgK8DlXGQ1OA0A8UGSOgI+KBimAa8ByJoz9DagYHRDcBoA07wi5wMKhhlCkgHvbv0H44EzgCwvUBSIFEcjRQmJoqQMM5FUDDeAEgwArpitnMdWsSoAAAAASUVORK5CYII="
+   "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAXUlEQVR42mMQEpL4TwlmABFWVi4kYzU1PVQDenqmEaURpg7DAFJtx2kATBIbxusFZAl8NtPXgLKylv9hYUnkGwDSDDJk4LxAtgEURSPZCYmUpIzVAHxOx4XhBlCCATrqkqKabMq2AAAAAElFTkSuQmCC"
   },
   {
    "path": "",
-   "name": "void_condenser_bottom.png",
+   "name": "void_condenser_top.png",
    "folder": "block",
    "namespace": "skyorigins2core",
    "id": "2",
@@ -677,13 +677,13 @@
    "visible": true,
    "mode": "bitmap",
    "saved": true,
-   "uuid": "68928f5e-c395-4174-9107-27bd9b98d6fa",
+   "uuid": "ef3d055a-2761-4509-bb54-0bc2292a8661",
    "relative_path": "",
    "width": 16,
    "height": 16,
    "uv_width": 16,
    "uv_height": 16,
-   "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAXUlEQVR42mMQEpL4TwlmABFWVi4kYzU1PVQDenqmEaURpg7DAFJtx2kATBIbxusFZAl8NtPXgLKylv9hYUnkGwDSDDJk4LxAtgEURSPZCYmUpIzVAHxOx4XhBlCCATrqkqKabMq2AAAAAElFTkSuQmCC"
+   "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdElEQVR42mMQEpL4TwlmABFhYUkkYysrF1QDenqmgQWJwSC1amp6qAYgK8DlXGQ1OA0A8UGSOgI+KBimAa8ByJoz9DagYHRDcBoA07wi5wMKhhlCkgHvbv0H44EzgCwvUBSIFEcjRQmJoqQMM5FUDDeAEgwArpitnMdWsSoAAAAASUVORK5CYII="
   },
   {
    "path": "",
@@ -696,7 +696,7 @@
    "visible": true,
    "mode": "bitmap",
    "saved": true,
-   "uuid": "8ef140c1-4bb3-41ca-b1f7-99d6f161b950",
+   "uuid": "f9aa2a3c-e979-4f60-93d3-d3ab1862a3e7",
    "relative_path": "",
    "width": 16,
    "height": 16,

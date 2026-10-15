@@ -12,7 +12,55 @@ CASING = {
     "v": (44, 16, 76), "p": (104, 46, 176), "q": (168, 108, 240), "w": (238, 218, 255), "b": (140, 140, 150),
 }
 
+
+def noise_grid(seed, chars, weights, top=None):
+    """A 16x16 grid of characters picked at random (but repeatably) by weight, like vanilla's speckled
+    dirt and stone. `top` optionally overrides the first rows, e.g. the green fringe on a grass side."""
+    import random
+    rng = random.Random(seed)
+    rows = ["".join(rng.choices(chars, weights)[0] for _ in range(16)) for _ in range(16)]
+    if top:
+        rows[:len(top)] = top
+    return rows
+
+
+ISLAND = {
+    "k": (40, 26, 18), "e": (78, 54, 36), "f": (104, 74, 50), "j": (128, 94, 64),        # dirt
+    "s": (88, 88, 92), "t": (112, 112, 118), "u": (136, 136, 142), "x": (66, 66, 72),     # stone
+    "G": (58, 112, 40), "H": (76, 140, 52), "I": (98, 166, 66), "J": (124, 190, 82),      # grass
+    "v": (44, 16, 76), "p": (104, 46, 176), "q": (168, 108, 240), "w": (238, 218, 255),   # void crystal
+}
+
 TEXTURES = {
+    # Floating island pieces for the Void Island Core model
+    "island_grass_top": (ISLAND, noise_grid(11, "GHIJ", [3, 5, 4, 1])),
+    "island_grass_side": (ISLAND, noise_grid(12, "kefj", [1, 4, 4, 2], top=[
+        "HIHJHIHHIJHIHHIH",
+        "GHIHGHHIHGHHIHGH",
+        "GHfGHHeGHfHGeHHG",
+        "eGeefGjeGefeGeje",
+    ])),
+    "island_dirt": (ISLAND, noise_grid(13, "kefj", [1, 4, 4, 2])),
+    "island_stone": (ISLAND, noise_grid(14, "xstu", [2, 6, 4, 1])),
+    # Faceted void crystal (rendered full-bright)
+    "void_crystal": (ISLAND, [
+        "vvvvvvpqqpvvvvvv",
+        "vvvvvpqwwqpvvvvv",
+        "vvvvpqqwwqqpvvvv",
+        "vvvpqqwwqqqqpvvv",
+        "vvpqqwwqqpqqqpvv",
+        "vpqqwwqqpvpqqqpv",
+        "pqqwwqqpvvvpqqqp",
+        "pqwwqqpvvvvvpqqp",
+        "pqwqqpvvvvvvvpqp",
+        "pqqqpvvvvvvvvpqp",
+        "vpqpvvvvvvvvpqpv",
+        "vvppvvvvvvvvppvv",
+        "vvvpvvvvvvvvpvvv",
+        "vvvvpvvvvvvpvvvv",
+        "vvvvvpvvvvpvvvvv",
+        "vvvvvvppppvvvvvv",
+    ]),
     # Plain machine casing for the frame: base, cap and pillars
     "void_condenser_casing": (CASING, [
         "kkkkkkkkkkkkkkkk",
