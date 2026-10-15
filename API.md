@@ -66,17 +66,19 @@ import com.skyorigins2core.api.mana.ManaAttributes;
 
 // e.g. in an ArmorItem's getDefaultAttributeModifiers:
 builder.put(ManaAttributes.MAX_MANA.get(),
-        new AttributeModifier(UUID.fromString("<a fixed uuid>"), "Mana helmet", 50, AttributeModifier.Operation.ADDITION));
+        new AttributeModifier(UUID.fromString("<a fixed uuid>"), "Mana helmet", 25, AttributeModifier.Operation.ADDITION));  // only helps if base max is below 100
 builder.put(ManaAttributes.MANA_REGEN.get(),
         new AttributeModifier(UUID.fromString("<another fixed uuid>"), "Mana helmet regen", 1.0, AttributeModifier.Operation.ADDITION));
 ```
 
 | Attribute | Meaning | Base value |
 |---|---|---|
-| `skyorigins2core:max_mana` | Maximum mana | 100 |
+| `skyorigins2core:max_mana` | Maximum mana, **capped at 100** (`ManaAttributes.MANA_CAP`) | 100 |
 | `skyorigins2core:mana_regen` | Mana regenerated per second | 2 |
 
 Base values are set in `config/skyorigins2core-common.toml` and applied when a player joins or respawns.
+Max mana can never go above 100. With the default base of 100, `max_mana` boosts have no effect, so lower
+`baseMaxMana` (for example to 50) if you want gear to raise it; `mana_regen` boosts always work.
 
 Mana is saved with the player, refills on respawn after death, and carries through the End portal.
 

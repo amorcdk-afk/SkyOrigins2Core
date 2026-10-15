@@ -14,9 +14,12 @@ public final class ManaAttributes
 {
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, SkyOrigins2Core.MODID);
 
-    // Maximum mana
+    // Hard ceiling for maximum mana: no base value or modifier can take it higher
+    public static final int MANA_CAP = 100;
+
+    // Maximum mana, capped at MANA_CAP
     public static final RegistryObject<Attribute> MAX_MANA = ATTRIBUTES.register("max_mana",
-            () -> new RangedAttribute("attribute.name.skyorigins2core.max_mana", 100.0, 0.0, 1_000_000.0).setSyncable(true));
+            () -> new RangedAttribute("attribute.name.skyorigins2core.max_mana", MANA_CAP, 0.0, MANA_CAP).setSyncable(true));
     // Mana regenerated per second
     public static final RegistryObject<Attribute> MANA_REGEN = ATTRIBUTES.register("mana_regen",
             () -> new RangedAttribute("attribute.name.skyorigins2core.mana_regen", 2.0, 0.0, 100_000.0).setSyncable(true));
