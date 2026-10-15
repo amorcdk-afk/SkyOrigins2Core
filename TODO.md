@@ -28,6 +28,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] GameTests (`ModGameTests`, run with `gradlew runGameTestServer`): core grows and registers; condenser produces output; reef pool stays inside its rim
 
 ## 2. Void Origins — GO WITH CHANGES
+- [x] Skyblock Builder (+ LibX) in the dev environment; its default configs are in `run/config/skyblockbuilder/`
 - [ ] Classic default start + 1 new origin, built with Skyblock Builder templates, NBT, loot tables and quests (no custom Java)
 - [ ] New origin's first 1–3 hours must use a genuinely different resource method
 - [ ] Playtest it end to end; cut the feature if it isn't clearly fun and different

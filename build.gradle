@@ -167,6 +167,7 @@ def devMods = [
         'Mekanism-', 'MekanismGenerators',                  // machines (Resonant Circuit)
         'jei-1.20.1', 'mezz_config',                        // recipe viewer
         'ftb-quests-forge', 'ftb-teams-forge', 'ftb-library-forge',  // quest book (gate quests)
+        'SkyblockBuilder', 'LibX',                         // skyblock worlds, islands and start templates (Void Origins)
 ]
 
 dependencies {
