@@ -10,7 +10,8 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Remove the MDK example block, item, creative tab and demo config
 - [x] Run `.\gradlew.bat genIntellijRuns` (or `genEclipseRuns`) and confirm `runClient` launches
 - [x] Decide the base modlist for 1.20.1 — `MODLIST.md`, downloaded with `tools/download_mods.py`
-- [ ] Work through the open checks in `MODLIST.md` (team sync, all-mods launch test, sieve coverage)
+- [ ] Work through the open checks in `MODLIST.md` (team sync and sieve coverage done; all-mods launch test left)
+- [ ] Playtest the new sieve rates (metal floors in `tools/make_sieve_rates.py`); SkyOrigins 1's were too low, so err high
 
 ## 1. Island Cores — GO WITH CHANGES
 - [ ] **Spawn test first:** Void Island Core (`void_island` + `void_isle` biome) on a LAN/dedicated server
@@ -51,7 +52,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Add the tech/magic mods to the dev environment (`devMods` in `build.gradle`, jars from `pack-mods/`): KubeJS, Ex Deorum, Botania, Mekanism, JEI
 - [ ] Add Create to the dev environment (needs Flywheel and Ponder as separate dev dependencies)
 - [x] First KubeJS recipes (`kubejs/server_scripts/arcane_tech_bridge.js`): Void Dust from sieving dust (5–30% by mesh), Arcane Alloy from a mana pool (3000 mana), Resonant Circuit from a Metallurgic Infuser (20 redstone)
-- [ ] Playtest the chain in game and tune the numbers
+- [x] Playtest the chain in game and tune the numbers (played through, numbers fine, 2026-10-15)
 - [x] 3–5 KubeJS crossover gates (`kubejs/server_scripts/arcane_tech_gates.js`): Metallurgic Infuser + Enrichment Chamber need Arcane Alloy; Runic Altar + Terrestrial Agglomeration Plate need a Resonant Circuit
 - [x] FTB Quests, FTB Teams and FTB Library in the dev environment; quests live in `ftbquests/quests/` (linked into `run/config/ftbquests/quests`, so in-game edits save to the repo)
 - [x] A quest explaining each gate: "Arcane-Tech Bridge" chapter (Void Dust -> Arcane Alloy -> 4 gates, Resonant Circuit, Void Condenser, Void Island Core)
