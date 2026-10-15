@@ -29,7 +29,14 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 
 ## 2. Void Origins — GO WITH CHANGES
 - [x] Skyblock Builder (+ LibX) in the dev environment; its default configs are in `run/config/skyblockbuilder/`
-- [ ] Classic default start + 1 new origin, built with Skyblock Builder templates, NBT, loot tables and quests (no custom Java)
+- [x] Picked the starts (Idea Court, 2026-10-15; Void Fisher, Wreck Salvager, Crust Exile ruled out, Void Fisher is the fallback):
+  main start **SkyFactory** (one oak on one grass block), option **Botanist's Grove** (GO WITH CHANGES)
+- [x] Both templates built by `tools/make_templates.py` into `config/skyblockbuilder/templates/`; `config/` is copied into `run/config` before runs; players may create their own team (`createOwnTeam`) so servers can pick a start
+- [ ] In game: create a Skyblock world with each start and check the island, spawn point and Grove chest
+- [ ] Grove bootstrap: decide how Grove players get stone (Pure Daisy -> livingrock -> mana pool) and copper (mana spreader) without sieving
+- [ ] Grove rules from the verdict: no recipe removals or nerfs; new mana recipes priced at or above sieving so the SkyFactory start gains no shortcut; normal Orechid only
+- [ ] Grove first-hour quest chapter (flowers, apothecary, Pure Daisy, spreader, pool)
+- [ ] Grove kill test: cut it if hour one is mostly waiting on mana, or it merges into sieving before ~90 min
 - [ ] New origin's first 1–3 hours must use a genuinely different resource method
 - [ ] Playtest it end to end; cut the feature if it isn't clearly fun and different
 - [ ] Only then add a second origin

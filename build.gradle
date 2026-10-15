@@ -123,6 +123,14 @@ def copyKubeJS = tasks.register('copyKubeJS', Copy) {
 }
 tasks.matching { it.name.startsWith('prepareRun') }.configureEach { dependsOn copyKubeJS }
 
+// Pack config files (Skyblock Builder start templates and settings) live in config/ in the repo;
+// copy them over the dev game's config before each run. Templates come from tools/make_templates.py.
+def copyPackConfig = tasks.register('copyPackConfig', Copy) {
+    from 'config'
+    into 'run/config'
+}
+tasks.matching { it.name.startsWith('prepareRun') }.configureEach { dependsOn copyPackConfig }
+
 // The pack's FTB Quests live in ftbquests/quests in the repo. Link run/config/ftbquests/quests to that folder
 // (a directory junction on Windows) so quests edited in game with FTB Quests' edit mode are saved straight
 // into the repo. Only created when missing; an existing real folder there is left alone.

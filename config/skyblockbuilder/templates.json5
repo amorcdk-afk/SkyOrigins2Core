@@ -1,0 +1,55 @@
+{
+  // SkyOrigins 2 starts. Islands are built by tools/make_templates.py (rebuild after editing it).
+  // The first entry is the default start; players pick another when creating a world
+  // (singleplayer) or with /skyblock create <team> <template> on a server.
+  "defaultOffset": 0,
+
+  "spawn": null,
+
+  // Player spawn positions inside each template (relative to its corner)
+  "spawns": {
+    "skyfactory": {
+      "west": [],
+      "east": [],
+      "south": [
+        [ 2, 7, 2 ]
+      ],
+      "north": []
+    },
+    "botanists_grove": {
+      "west": [],
+      "east": [],
+      "south": [
+        [ 4, 2, 4 ]
+      ],
+      "north": []
+    }
+  },
+
+  "spreads": {
+    "default": []
+  },
+
+  "surroundingBlocks": {
+    "default": []
+  },
+
+  "templates": [
+    {
+      "name": "skyfactory",
+      "desc": "One tree on one block of dirt. The classic start",
+      "file": "skyfactory.nbt",
+      "spawns": "skyfactory",
+      "surroundingBlocks": "default",
+      "spreads": "default"
+    },
+    {
+      "name": "botanists_grove",
+      "desc": "A flower garden: start with Botania and mana instead of sieves",
+      "file": "botanists_grove.nbt",
+      "spawns": "botanists_grove",
+      "surroundingBlocks": "default",
+      "spreads": "default"
+    }
+  ]
+}
