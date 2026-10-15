@@ -35,14 +35,14 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [ ] Frame as "starts", not deep Origins-mod-style races
 
 ## 3. Arcane-Tech Bridge — GO WITH CHANGES (tier 1 only)
-- [x] Register 3 items: Void Dust, Infused Alloy, Resonant Circuit (placeholder textures; tagged `forge:dusts/void`, `forge:ingots/infused_alloy`)
+- [x] Register 3 items: Void Dust, Arcane Alloy, Resonant Circuit (tagged `forge:dusts/void`, `forge:ingots/arcane_alloy`)
 - [x] Add the tech/magic mods to the dev environment (`devMods` in `build.gradle`, jars from `pack-mods/`): KubeJS, Ex Deorum, Botania, Mekanism, JEI
 - [ ] Add Create to the dev environment (needs Flywheel and Ponder as separate dev dependencies)
-- [x] First KubeJS recipes (`kubejs/server_scripts/arcane_tech_bridge.js`): Void Dust from sieving dust (5–30% by mesh), Infused Alloy from a mana pool (3000 mana), Resonant Circuit from a Metallurgic Infuser (20 redstone)
+- [x] First KubeJS recipes (`kubejs/server_scripts/arcane_tech_bridge.js`): Void Dust from sieving dust (5–30% by mesh), Arcane Alloy from a mana pool (3000 mana), Resonant Circuit from a Metallurgic Infuser (20 redstone)
 - [ ] Playtest the chain in game and tune the numbers
-- [x] 3–5 KubeJS crossover gates (`kubejs/server_scripts/arcane_tech_gates.js`): Metallurgic Infuser + Enrichment Chamber need Infused Alloy; Runic Altar + Terrestrial Agglomeration Plate need a Resonant Circuit
+- [x] 3–5 KubeJS crossover gates (`kubejs/server_scripts/arcane_tech_gates.js`): Metallurgic Infuser + Enrichment Chamber need Arcane Alloy; Runic Altar + Terrestrial Agglomeration Plate need a Resonant Circuit
 - [ ] A quest explaining each gate (needs FTB Quests in the dev environment)
-- [ ] Rename our "Infused Alloy": Mekanism already has an item with that exact name
+- [x] Renamed our "Infused Alloy" to Arcane Alloy (`arcane_alloy`): Mekanism already has an Infused Alloy
 - [ ] Playtest with one tech-only and one magic-only player; cut any gate taking the "wrong-side" player > ~15 min
 - [ ] Write down the Void Condenser's output rate vs. a sieve before building it
 - [ ] Stretch: single-block Condenser (Forge Energy + Botania mana only). Ars Nouveau and multiblock after release

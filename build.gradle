@@ -140,7 +140,7 @@ repositories {
 def devMods = [
         'kubejs-forge', 'rhino-forge', 'architectury',     // KubeJS recipe scripts
         'exdeorum',                                         // sieving (Void Dust)
-        'Botania', 'Patchouli', 'curios-forge',             // mana infusion (Infused Alloy)
+        'Botania', 'Patchouli', 'curios-forge',             // mana infusion (Arcane Alloy)
         'Mekanism-', 'MekanismGenerators',                  // machines (Resonant Circuit)
         'jei-1.20.1', 'mezz_config',                        // recipe viewer
 ]

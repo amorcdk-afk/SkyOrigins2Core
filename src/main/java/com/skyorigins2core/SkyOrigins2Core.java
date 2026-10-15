@@ -69,8 +69,8 @@ public class SkyOrigins2Core
     // Their recipes and gates live in KubeJS so they can be rebalanced without recompiling.
     // Void Dust comes from sieving; tagged forge:dusts/void
     public static final RegistryObject<Item> VOID_DUST = ITEMS.register("void_dust", () -> new Item(new Item.Properties()));
-    // Magic-infused metal; tagged forge:ingots/infused_alloy
-    public static final RegistryObject<Item> INFUSED_ALLOY = ITEMS.register("infused_alloy", () -> new Item(new Item.Properties()));
+    // Magic-infused metal; tagged forge:ingots/arcane_alloy
+    public static final RegistryObject<Item> ARCANE_ALLOY = ITEMS.register("arcane_alloy", () -> new Item(new Item.Properties()));
     // Machine-made part that magic recipes need
     public static final RegistryObject<Item> RESONANT_CIRCUIT = ITEMS.register("resonant_circuit", () -> new Item(new Item.Properties()));
 
@@ -80,7 +80,7 @@ public class SkyOrigins2Core
             .displayItems((parameters, output) -> {
                 output.accept(VOID_ISLAND_CORE_ITEM.get());
                 output.accept(VOID_DUST.get());
-                output.accept(INFUSED_ALLOY.get());
+                output.accept(ARCANE_ALLOY.get());
                 output.accept(RESONANT_CIRCUIT.get());
             })
             .build());

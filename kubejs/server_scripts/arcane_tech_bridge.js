@@ -1,7 +1,7 @@
 // Arcane-Tech Bridge, tier 1: the three materials chain magic and tech together.
 //   Void Dust        <- sieving Ex Deorum dust (skyblock core loop)
-//   Infused Alloy    <- Void Dust in a Botania mana pool (magic)
-//   Resonant Circuit <- Infused Alloy in a Mekanism Metallurgic Infuser with redstone (tech)
+//   Arcane Alloy     <- Void Dust in a Botania mana pool (magic)
+//   Resonant Circuit <- Arcane Alloy in a Mekanism Metallurgic Infuser with redstone (tech)
 // Formats copied from the mods' own 1.20.1 recipes. Tune numbers here; /reload applies changes.
 
 ServerEvents.recipes(event => {
@@ -24,19 +24,19 @@ ServerEvents.recipes(event => {
         }).id(`skyorigins2core:sieve/dust/${mesh}/void_dust`)
     })
 
-    // Infused Alloy: mana pool infusion
+    // Arcane Alloy: mana pool infusion
     event.custom({
         type: 'botania:mana_infusion',
         input: { tag: 'forge:dusts/void' },
         mana: 3000,
-        output: { item: 'skyorigins2core:infused_alloy' },
-    }).id('skyorigins2core:mana_infusion/infused_alloy')
+        output: { item: 'skyorigins2core:arcane_alloy' },
+    }).id('skyorigins2core:mana_infusion/arcane_alloy')
 
     // Resonant Circuit: Metallurgic Infuser with redstone
     event.custom({
         type: 'mekanism:metallurgic_infusing',
         chemicalInput: { amount: 20, tag: 'mekanism:redstone' },
-        itemInput: { ingredient: { tag: 'forge:ingots/infused_alloy' } },
+        itemInput: { ingredient: { tag: 'forge:ingots/arcane_alloy' } },
         output: { item: 'skyorigins2core:resonant_circuit' },
     }).id('skyorigins2core:metallurgic_infusing/resonant_circuit')
 })

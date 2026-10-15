@@ -28,7 +28,7 @@ TEXTURES = {
         "....oooooooo....",
     ]),
     # A teal metal ingot with glowing purple veins, shaped like vanilla ingots
-    "infused_alloy": ({
+    "arcane_alloy": ({
         "o": (14, 30, 38), "e": (28, 64, 76), "m": (48, 112, 124), "l": (88, 168, 172),
         "h": (160, 228, 224), "w": (236, 255, 252), "p": (138, 70, 214), "q": (206, 150, 255),
     }, [

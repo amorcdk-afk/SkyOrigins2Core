@@ -1,15 +1,15 @@
 // Arcane-Tech Bridge gates: a few early-to-mid milestones need the other side's material,
 // so players can't ignore half the pack. Keep this list short (3-5 gates) and explain each in a quest.
-//   Tech needs magic:  Metallurgic Infuser, Enrichment Chamber  <- Infused Alloy (mana pool)
+//   Tech needs magic:  Metallurgic Infuser, Enrichment Chamber  <- Arcane Alloy (mana pool)
 //   Magic needs tech:  Runic Altar, Terrestrial Agglomeration Plate  <- Resonant Circuit (Metallurgic Infuser)
-// Infused Alloy itself is never gated (it only needs a mana pool), so the chain can't deadlock.
+// Arcane Alloy itself is never gated (it only needs a mana pool), so the chain can't deadlock.
 // Each original recipe is removed and replaced with an otherwise identical one.
 
 ServerEvents.recipes(event => {
-    const alloy = '#forge:ingots/infused_alloy'
+    const alloy = '#forge:ingots/arcane_alloy'
     const circuit = 'skyorigins2core:resonant_circuit'
 
-    // Metallurgic Infuser: the osmium ingot becomes Infused Alloy
+    // Metallurgic Infuser: the osmium ingot becomes Arcane Alloy
     event.remove({ id: 'mekanism:metallurgic_infuser' })
     event.shaped('mekanism:metallurgic_infuser', [
         'I#I',
@@ -22,7 +22,7 @@ ServerEvents.recipes(event => {
         A: alloy,
     }).id('skyorigins2core:gate/metallurgic_infuser')
 
-    // Enrichment Chamber: the two iron ingots become Infused Alloy
+    // Enrichment Chamber: the two iron ingots become Arcane Alloy
     event.remove({ id: 'mekanism:enrichment_chamber' })
     event.shaped('mekanism:enrichment_chamber', [
         'ACA',
