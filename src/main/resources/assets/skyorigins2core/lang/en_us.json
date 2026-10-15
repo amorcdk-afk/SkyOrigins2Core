@@ -9,5 +9,8 @@
   "biome.skyorigins2core.void_isle": "Void Isle",
   "biome.skyorigins2core.desert_isle": "Desert Isle",
   "biome.skyorigins2core.crust_isle": "Crimson Crust",
-  "biome.skyorigins2core.reef_isle": "Reef Isle"
+  "biome.skyorigins2core.reef_isle": "Reef Isle",
+  "attribute.name.skyorigins2core.max_mana": "Max Mana",
+  "attribute.name.skyorigins2core.mana_regen": "Mana Regeneration",
+  "commands.skyorigins2core.mana.get": "%s has %s / %s mana"
 }

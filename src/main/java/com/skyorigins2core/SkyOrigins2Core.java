@@ -1,6 +1,7 @@
 package com.skyorigins2core;
 
 import com.mojang.logging.LogUtils;
+import com.skyorigins2core.api.mana.ManaAttributes;
 import com.skyorigins2core.condenser.CondenserSettings;
 import com.skyorigins2core.condenser.VoidCondenserBlock;
 import com.skyorigins2core.condenser.VoidCondenserBlockEntity;
@@ -10,6 +11,10 @@ import com.skyorigins2core.island.IslandCoreBlockEntity;
 import com.skyorigins2core.island.IslandDefinitions;
 import com.skyorigins2core.island.IslandPools;
 import com.skyorigins2core.island.IslandSpawner;
+import com.skyorigins2core.mana.ManaCommands;
+import com.skyorigins2core.mana.ManaConfig;
+import com.skyorigins2core.mana.ManaEvents;
+import com.skyorigins2core.network.ModNetwork;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -28,6 +33,8 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -112,6 +119,13 @@ public class SkyOrigins2Core
         ITEMS.register(modEventBus);
         BLOCK_ENTITY_TYPES.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
+        ManaAttributes.ATTRIBUTES.register(modEventBus);
+
+        // Player mana: capability, attributes, regen and sync (see api.mana for what other mods use)
+        context.registerConfig(ModConfig.Type.COMMON, ManaConfig.COMMON_SPEC);
+        context.registerConfig(ModConfig.Type.CLIENT, ManaConfig.CLIENT_SPEC);
+        ManaEvents.register(modEventBus);
+        modEventBus.addListener((FMLCommonSetupEvent event) -> event.enqueueWork(ModNetwork::register));
 
         // Load island definitions from data packs on server start and /reload
         MinecraftForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> {
@@ -119,7 +133,10 @@ public class SkyOrigins2Core
             event.addListener(new IslandPools());
             event.addListener(new CondenserSettings());
         });
-        MinecraftForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> IslandCommands.register(event.getDispatcher()));
+        MinecraftForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> {
+            IslandCommands.register(event.getDispatcher());
+            ManaCommands.register(event.getDispatcher());
+        });
         // Spawn mobs on grown islands, which vanilla spawning almost never reaches
         MinecraftForge.EVENT_BUS.addListener((TickEvent.LevelTickEvent event) -> {
             if (event.phase == TickEvent.Phase.END && event.level instanceof ServerLevel level)

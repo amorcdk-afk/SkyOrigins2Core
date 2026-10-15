@@ -1,16 +1,20 @@
 package com.skyorigins2core;
 
+import com.skyorigins2core.api.mana.ManaApi;
 import com.skyorigins2core.condenser.VoidCondenserBlockEntity;
 import com.skyorigins2core.island.IslandDefinition;
 import com.skyorigins2core.island.IslandDefinitions;
 import com.skyorigins2core.island.IslandRegistry;
 import com.skyorigins2core.island.IslandShape;
+import com.skyorigins2core.mana.ManaEvents;
+import com.skyorigins2core.mana.PlayerMana;
 import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -70,6 +74,35 @@ public class ModGameTests
                     .anyMatch(island -> island.center().equals(absolute));
             helper.assertTrue(registered, "Grown island wasn't registered");
         });
+    }
+
+    // A player's mana can't go below zero or above their maximum, can't be overspent, and regenerates
+    @GameTest(template = "empty_3x3")
+    public static void playerManaRespectsLimits(GameTestHelper helper)
+    {
+        Player player = helper.makeMockPlayer();
+        PlayerMana mana = ManaEvents.of(player).orElse(null);
+        if (mana == null)
+        {
+            helper.fail("Player has no mana capability");
+            return;
+        }
+        int max = mana.getMaxMana();
+        helper.assertTrue(max > 0, "Max mana should come from the max_mana attribute, got " + max);
+
+        mana.set(0);
+        helper.assertFalse(mana.consume(1, false), "Spent mana the player didn't have");
+        mana.add(max + 50);
+        helper.assertTrue(mana.getMana() == max, "Mana went over the maximum: " + mana.getMana());
+        helper.assertTrue(mana.consume(30, true) && mana.getMana() == max, "Simulated spend changed mana");
+        helper.assertTrue(mana.consume(30, false) && mana.getMana() == max - 30, "Spend didn't remove 30");
+        helper.assertTrue(ManaApi.has(player, max - 30) && !ManaApi.has(player, max - 29), "ManaApi.has disagrees with the pool");
+
+        double regen = mana.getRegenPerSecond();
+        mana.regenerate(regen * 5);
+        int expected = (int) Math.min(max, max - 30 + regen * 5);
+        helper.assertTrue(mana.getMana() == expected, "Regen gave " + mana.getMana() + ", expected " + expected);
+        helper.succeed();
     }
 
     // A reef island placed in its planned order keeps its water inside the pool: none spills over the rim
