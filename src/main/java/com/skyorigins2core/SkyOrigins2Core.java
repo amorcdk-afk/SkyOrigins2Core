@@ -6,6 +6,7 @@ import com.skyorigins2core.api.mana.ManaAttributes;
 import com.skyorigins2core.condenser.CondenserSettings;
 import com.skyorigins2core.condenser.VoidCondenserBlock;
 import com.skyorigins2core.condenser.VoidCondenserBlockEntity;
+import com.skyorigins2core.compat.TeamSyncCompat;
 import com.skyorigins2core.island.IslandCommands;
 import com.skyorigins2core.island.IslandCoreBlock;
 import com.skyorigins2core.island.IslandCoreBlockEntity;
@@ -34,6 +35,7 @@ import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -141,6 +143,9 @@ public class SkyOrigins2Core
             IslandCommands.register(event.getDispatcher());
             ManaCommands.register(event.getDispatcher());
         });
+        // Island teams (Skyblock Builder) share FTB Quests progress through matching FTB Teams parties
+        if (ModList.get().isLoaded("skyblockbuilder") && ModList.get().isLoaded("ftbteams"))
+            TeamSyncCompat.register();
         // Spawn mobs on grown islands, which vanilla spawning almost never reaches
         MinecraftForge.EVENT_BUS.addListener((TickEvent.LevelTickEvent event) -> {
             if (event.phase == TickEvent.Phase.END && event.level instanceof ServerLevel level)

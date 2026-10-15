@@ -205,15 +205,19 @@ dependencies {
     // so split each file name at its last hyphen.
     def packMods = file('pack-mods').listFiles()?.findAll { it.name.endsWith('.jar') } ?: []
 
-    // Botania's API is needed to compile the Void Condenser's mana input (com.skyorigins2core.compat.BotaniaCompat).
-    // It's only used when Botania is installed, so the mod still runs without it.
-    def botaniaJar = packMods.find { it.name.startsWith('Botania') }
-    if (botaniaJar == null) {
-        throw new GradleException("pack-mods/ has no Botania jar, which is needed to compile. Run: python tools/download_mods.py")
+    // Mods whose classes our compat code compiles against (com.skyorigins2core.compat). Each is only touched
+    // when that mod is installed, so the mod still runs without them.
+    //   Botania: the Void Condenser's mana input
+    //   Skyblock Builder + FTB Teams/Library: TeamSyncCompat, which mirrors island teams into FTB Teams parties
+    ['Botania', 'SkyblockBuilder', 'ftb-teams-forge', 'ftb-library-forge'].each { prefix ->
+        def jar = packMods.find { it.name.startsWith(prefix) }
+        if (jar == null) {
+            throw new GradleException("pack-mods/ has no ${prefix} jar, which is needed to compile. Run: python tools/download_mods.py")
+        }
+        def base = jar.name.substring(0, jar.name.length() - 4)
+        def cut = base.lastIndexOf('-')
+        compileOnly fg.deobf("devmods:${base.substring(0, cut)}:${base.substring(cut + 1)}")
     }
-    def botaniaBase = botaniaJar.name.substring(0, botaniaJar.name.length() - 4)
-    def botaniaCut = botaniaBase.lastIndexOf('-')
-    compileOnly fg.deobf("devmods:${botaniaBase.substring(0, botaniaCut)}:${botaniaBase.substring(botaniaCut + 1)}")
     devMods.each { prefix ->
         def jar = packMods.find { it.name.startsWith(prefix) }
         if (jar == null) {

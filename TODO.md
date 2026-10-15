@@ -63,7 +63,8 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 
 ## 4. Multiplayer — GO WITH CHANGES (config, not code)
 - [x] Check Skyblock Builder teams and FTB Teams stay in sync: they don't (2026-10-15). Skyblock Builder 5.1.33 has no FTB compat, so island teammates keep separate FTB Quests progress
-- [ ] Bridge them: when a Skyblock Builder team gains or loses a member, mirror it into an FTB Teams party (Skyblock Builder events + FTB Teams party API)
+- [x] Bridge them: `compat/TeamSyncCompat` mirrors each Skyblock Builder island team into an FTB Teams party (once a second and on login; Skyblock Builder is the source of truth)
+- [ ] Test the bridge with two players (LAN or `runServer` + two clients): create an island team, invite, accept, check `/ftbteams info` and shared quest progress; leave and check the party drops you; owner leaving hands the party on
 - [ ] Preconfigure Skyblock Builder + FTB Teams/Quests
 - [ ] Later: island score built on FTB Quests completion data, datapack-configurable
 - [ ] Drop the custom Sky Market; add Lightman's Currency via config if players ask
