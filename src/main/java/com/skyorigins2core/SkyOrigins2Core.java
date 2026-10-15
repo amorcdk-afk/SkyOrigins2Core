@@ -65,10 +65,24 @@ public class SkyOrigins2Core
     public static final RegistryObject<BlockEntityType<IslandCoreBlockEntity>> ISLAND_CORE = BLOCK_ENTITY_TYPES.register("island_core",
             () -> BlockEntityType.Builder.of(IslandCoreBlockEntity::new, VOID_ISLAND_CORE.get()).build(null));
 
+    // Arcane-Tech Bridge materials: the tech and magic mods' key recipes need each other's parts.
+    // Their recipes and gates live in KubeJS so they can be rebalanced without recompiling.
+    // Void Dust comes from sieving; tagged forge:dusts/void
+    public static final RegistryObject<Item> VOID_DUST = ITEMS.register("void_dust", () -> new Item(new Item.Properties()));
+    // Magic-infused metal; tagged forge:ingots/infused_alloy
+    public static final RegistryObject<Item> INFUSED_ALLOY = ITEMS.register("infused_alloy", () -> new Item(new Item.Properties()));
+    // Machine-made part that magic recipes need
+    public static final RegistryObject<Item> RESONANT_CIRCUIT = ITEMS.register("resonant_circuit", () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<CreativeModeTab> MAIN_TAB = CREATIVE_MODE_TABS.register("main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.skyorigins2core"))
             .icon(() -> VOID_ISLAND_CORE_ITEM.get().getDefaultInstance())
-            .displayItems((parameters, output) -> output.accept(VOID_ISLAND_CORE_ITEM.get()))
+            .displayItems((parameters, output) -> {
+                output.accept(VOID_ISLAND_CORE_ITEM.get());
+                output.accept(VOID_DUST.get());
+                output.accept(INFUSED_ALLOY.get());
+                output.accept(RESONANT_CIRCUIT.get());
+            })
             .build());
 
     public SkyOrigins2Core(FMLJavaModLoadingContext context)
