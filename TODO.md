@@ -62,7 +62,8 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [ ] Ars Nouveau (Source) input and multiblock version — after release
 
 ## 4. Multiplayer — GO WITH CHANGES (config, not code)
-- [ ] Check Skyblock Builder teams and FTB Teams stay in sync (or find/write a bridge)
+- [x] Check Skyblock Builder teams and FTB Teams stay in sync: they don't (2026-10-15). Skyblock Builder 5.1.33 has no FTB compat, so island teammates keep separate FTB Quests progress
+- [ ] Bridge them: when a Skyblock Builder team gains or loses a member, mirror it into an FTB Teams party (Skyblock Builder events + FTB Teams party API)
 - [ ] Preconfigure Skyblock Builder + FTB Teams/Quests
 - [ ] Later: island score built on FTB Quests completion data, datapack-configurable
 - [ ] Drop the custom Sky Market; add Lightman's Currency via config if players ask

@@ -79,6 +79,6 @@ Versions are the newest Forge 1.20.1 files on CurseForge, downloaded and checksu
 | Custom Ascension / NG+ | Not built; Prestige points later instead |
 
 ## Open checks
-- [ ] Do Skyblock Builder teams and FTB Teams stay in sync? No answer found online — test in a dev world before relying on both (flagged by the multiplayer verdict)
+- [x] Do Skyblock Builder teams and FTB Teams stay in sync? No: Skyblock Builder 5.1.33 has no FTB Teams compat (checked its jar, 2026-10-15), so a bridge is needed (see TODO.md)
 - [ ] Load all 39 jars together in a CurseForge profile and confirm the game starts without conflicts
 - [ ] Confirm Ex Deorum's sieve drops cover what Create/Mekanism/Thermal need (or add KubeJS sieve recipes)
