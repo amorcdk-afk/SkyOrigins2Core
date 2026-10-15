@@ -37,6 +37,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [ ] Grove rules from the verdict: no recipe removals or nerfs; new mana recipes priced at or above sieving so the SkyFactory start gains no shortcut; normal Orechid only
 - [x] Grove first-hour quest chapter (`ftbquests/quests/chapters/botanists_grove.snbt`, 9 quests)
 - [ ] Playtest the Grove mana prices against the SkyFactory start (does a classic player with a cobble generator gain anything?)
+- [x] SkyFactory Start quest chapter (`ftbquests/quests/chapters/skyfactory_start.snbt`, 15 quests: tree -> crook -> barrel -> silk worm/string -> sieve -> cobblestone -> hammer/dust -> clay -> porcelain crucible -> cobblestone generator); chapter order SkyFactory, Grove, Arcane-Tech Bridge
 - [ ] Grove kill test: cut it if hour one is mostly waiting on mana, or it merges into sieving before ~90 min
 - [ ] New origin's first 1–3 hours must use a genuinely different resource method
 - [ ] Playtest it end to end; cut the feature if it isn't clearly fun and different

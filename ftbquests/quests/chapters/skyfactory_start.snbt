@@ -1,0 +1,334 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "skyfactory_start"
+	group: ""
+	icon: "minecraft:oak_sapling"
+	id: "7B2C3D4E5F6A7B01"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"You start on top of a single oak tree. Climb down carefully: below the grass block is the void."
+				""
+				"Break some leaves first for saplings, then take logs, but always replant a sapling on the grass before taking the last log."
+			]
+			id: "7B2C3D4E5F6A7B10"
+			rewards: [{
+				id: "7B2C3D4E5F6A7B11"
+				type: "xp"
+				xp: 25
+			}]
+			subtitle: "One tree, one block of dirt"
+			tasks: [{
+				count: 4L
+				id: "7B2C3D4E5F6A7B12"
+				item: "minecraft:oak_log"
+				type: "item"
+			}]
+			title: "Punch the Tree"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7B10"]
+			description: [
+				"A Crook (sticks) breaks leaves and doubles their sapling drops. It sometimes finds a &eSilk Worm&r too."
+			]
+			id: "7B2C3D4E5F6A7B20"
+			rewards: [{
+				id: "7B2C3D4E5F6A7B21"
+				type: "xp"
+				xp: 25
+			}]
+			tasks: [{
+				id: "7B2C3D4E5F6A7B22"
+				item: "exdeorum:crook"
+				type: "item"
+			}]
+			title: "Crook"
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7B20"]
+			description: [
+				"Plant your saplings on the grass block. Grow a second tree before you try anything risky with the first."
+				""
+				"A bit of bone meal speeds this up."
+			]
+			id: "7B2C3D4E5F6A7B30"
+			rewards: [{
+				id: "7B2C3D4E5F6A7B31"
+				type: "xp"
+				xp: 25
+			}]
+			tasks: [{
+				count: 4L
+				id: "7B2C3D4E5F6A7B32"
+				item: "minecraft:oak_sapling"
+				type: "item"
+			}]
+			title: "More Trees"
+			x: 4.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7B10"]
+			description: [
+				"Fill an Oak Barrel with leaves and saplings: 8 leaves become 1 dirt."
+				""
+				"Every dirt block grows your island, and dirt feeds the sieve."
+			]
+			id: "7B2C3D4E5F6A7B40"
+			rewards: [{
+				id: "7B2C3D4E5F6A7B41"
+				type: "xp"
+				xp: 25
+			}]
+			subtitle: "Compost into dirt"
+			tasks: [{
+				id: "7B2C3D4E5F6A7B42"
+				item: "exdeorum:oak_barrel"
+				type: "item"
+			}]
+			title: "Oak Barrel"
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7B40"]
+			description: [
+				"Compost enough dirt to give yourself room: trees, a sieve and a walkway around them."
+			]
+			id: "7B2C3D4E5F6A7B50"
+			rewards: [{
+				id: "7B2C3D4E5F6A7B51"
+				type: "xp"
+				xp: 50
+			}]
+			tasks: [{
+				count: 16L
+				id: "7B2C3D4E5F6A7B52"
+				item: "minecraft:dirt"
+				type: "item"
+			}]
+			title: "Dirt"
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7B20"]
+			description: [
+				"Crooked leaves drop a Silk Worm about 1 time in 100. Use it on a tree's leaves to infest them."
+				""
+				"&cFully infested leaves give string but no saplings,&r so infest a spare tree, never your only one."
+			]
+			id: "7B2C3D4E5F6A7B60"
+			rewards: [{
+				id: "7B2C3D4E5F6A7B61"
+				type: "xp"
+				xp: 50
+			}]
+			tasks: [{
+				id: "7B2C3D4E5F6A7B62"
+				item: "exdeorum:silk_worm"
+				type: "item"
+			}]
+			title: "Silk Worm"
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7B60"]
+			description: [
+				"Harvest fully infested leaves with the Crook for string. 9 string make a String Mesh."
+			]
+			id: "7B2C3D4E5F6A7B70"
+			rewards: [{
+				id: "7B2C3D4E5F6A7B71"
+				type: "xp"
+				xp: 50
+			}]
+			tasks: [{
+				count: 9L
+				id: "7B2C3D4E5F6A7B72"
+				item: "minecraft:string"
+				type: "item"
+			}]
+			title: "String"
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7B50", "7B2C3D4E5F6A7B70"]
+			description: [
+				"An Oak Sieve with a &eString Mesh&r in it sifts dirt into stone pebbles, seeds and sugar cane."
+			]
+			id: "7B2C3D4E5F6A7B80"
+			rewards: [{
+				id: "7B2C3D4E5F6A7B81"
+				type: "xp"
+				xp: 75
+			}]
+			tasks: [{
+				id: "7B2C3D4E5F6A7B82"
+				item: "exdeorum:oak_sieve"
+				type: "item"
+			}]
+			title: "Sieve"
+			x: 8.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7B80"]
+			description: [
+				"4 stone pebbles craft a cobblestone. Your first stone tools and a furnace are close now."
+			]
+			id: "7B2C3D4E5F6A7B90"
+			rewards: [{
+				id: "7B2C3D4E5F6A7B91"
+				type: "xp"
+				xp: 75
+			}]
+			tasks: [{
+				count: 8L
+				id: "7B2C3D4E5F6A7B92"
+				item: "minecraft:cobblestone"
+				type: "item"
+			}]
+			title: "Cobblestone"
+			x: 10.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7B90"]
+			description: [
+				"Hammer cobblestone into gravel, gravel into sand and sand into dust. Each one sieves into different things: gravel gives ore chunks."
+			]
+			id: "7B2C3D4E5F6A7BA0"
+			rewards: [{
+				id: "7B2C3D4E5F6A7BA1"
+				type: "xp"
+				xp: 50
+			}]
+			tasks: [{
+				id: "7B2C3D4E5F6A7BA2"
+				item: "exdeorum:wooden_hammer"
+				type: "item"
+			}]
+			title: "Wooden Hammer"
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7BA0"]
+			description: [
+				"Dust is the end of the hammer line. Sieved, it can contain &dVoid Dust&r: see the Arcane-Tech Bridge chapter."
+				""
+				"Dust in a barrel of water turns into clay."
+			]
+			id: "7B2C3D4E5F6A7BB0"
+			rewards: [{
+				id: "7B2C3D4E5F6A7BB1"
+				type: "xp"
+				xp: 50
+			}]
+			tasks: [{
+				count: 4L
+				id: "7B2C3D4E5F6A7BB2"
+				item: "exdeorum:dust"
+				type: "item"
+			}]
+			title: "Dust"
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7B40"]
+			description: [
+				"An Oak Crucible melts leaves and saplings into water. Pour it into a barrel, or collect it for a pond."
+			]
+			id: "7B2C3D4E5F6A7BC0"
+			rewards: [{
+				id: "7B2C3D4E5F6A7BC1"
+				type: "xp"
+				xp: 50
+			}]
+			subtitle: "Water from leaves"
+			tasks: [{
+				id: "7B2C3D4E5F6A7BC2"
+				item: "exdeorum:oak_crucible"
+				type: "item"
+			}]
+			title: "Oak Crucible"
+			x: 4.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7BB0", "7B2C3D4E5F6A7BC0"]
+			description: [
+				"Put dust into a barrel full of water to make clay. Clay ball + bone meal = porcelain clay."
+			]
+			id: "7B2C3D4E5F6A7BD0"
+			rewards: [{
+				id: "7B2C3D4E5F6A7BD1"
+				type: "xp"
+				xp: 50
+			}]
+			tasks: [{
+				id: "7B2C3D4E5F6A7BD2"
+				item: "minecraft:clay"
+				type: "item"
+			}]
+			title: "Clay"
+			x: 16.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7BD0"]
+			description: [
+				"Shape porcelain clay into a crucible and fire it in a furnace. Over a torch it melts cobblestone into &6lava&r."
+			]
+			id: "7B2C3D4E5F6A7BE0"
+			rewards: [{
+				id: "7B2C3D4E5F6A7BE1"
+				type: "xp"
+				xp: 75
+			}]
+			subtitle: "Lava from cobblestone"
+			tasks: [{
+				id: "7B2C3D4E5F6A7BE2"
+				item: "exdeorum:porcelain_crucible"
+				type: "item"
+			}]
+			title: "Porcelain Crucible"
+			x: 18.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["7B2C3D4E5F6A7BE0"]
+			description: [
+				"Water and lava side by side make endless cobblestone, the start of everything from machines to Island Cores."
+				""
+				"Click the checkmark when it is running."
+			]
+			id: "7B2C3D4E5F6A7BF0"
+			rewards: [{
+				id: "7B2C3D4E5F6A7BF1"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "7B2C3D4E5F6A7BF2"
+				type: "checkmark"
+			}]
+			title: "Cobblestone Generator"
+			x: 20.0d
+			y: 1.0d
+		}
+	]
+	subtitle: ["The main start: from one tree to a cobblestone generator"]
+	title: "SkyFactory Start"
+}
