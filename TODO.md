@@ -42,7 +42,9 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] First KubeJS recipes (`kubejs/server_scripts/arcane_tech_bridge.js`): Void Dust from sieving dust (5–30% by mesh), Arcane Alloy from a mana pool (3000 mana), Resonant Circuit from a Metallurgic Infuser (20 redstone)
 - [ ] Playtest the chain in game and tune the numbers
 - [x] 3–5 KubeJS crossover gates (`kubejs/server_scripts/arcane_tech_gates.js`): Metallurgic Infuser + Enrichment Chamber need Arcane Alloy; Runic Altar + Terrestrial Agglomeration Plate need a Resonant Circuit
-- [ ] A quest explaining each gate (needs FTB Quests in the dev environment)
+- [x] FTB Quests, FTB Teams and FTB Library in the dev environment; quests live in `ftbquests/quests/` (linked into `run/config/ftbquests/quests`, so in-game edits save to the repo)
+- [x] A quest explaining each gate: "Arcane-Tech Bridge" chapter (Void Dust -> Arcane Alloy -> 4 gates, Resonant Circuit, Void Condenser, Void Island Core)
+- [ ] Check the chapter in game (layout, wording) and tune the XP rewards
 - [x] Renamed our "Infused Alloy" to Arcane Alloy (`arcane_alloy`): Mekanism already has an Infused Alloy
 - [ ] Playtest with one tech-only and one magic-only player; cut any gate taking the "wrong-side" player > ~15 min
 - [x] Write down the Void Condenser's output rate vs. a sieve before building it — makes sieve *inputs*, not ores: 1 roll per 10 s (8,000 FE + 1,500 mana) ≈ 15 blocks/min, ~1 Void Dust per 3 min; tunable in `data/skyorigins2core/void_condenser/default.json`

@@ -1,0 +1,215 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "arcane_tech_bridge"
+	group: ""
+	icon: "skyorigins2core:resonant_circuit"
+	id: "5C0A2B7E91D34F01"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"Sieve &eDust&r from Ex Deorum to find Void Dust."
+				""
+				"Any mesh works, but better meshes find it more often: from 5% with a String Mesh up to 30% with a Netherite Mesh."
+			]
+			id: "5C0A2B7E91D34F10"
+			rewards: [{
+				id: "5C0A2B7E91D34F11"
+				type: "xp"
+				xp: 50
+			}]
+			subtitle: "Where the bridge begins"
+			tasks: [{
+				id: "5C0A2B7E91D34F12"
+				item: "skyorigins2core:void_dust"
+				type: "item"
+			}]
+			title: "Void Dust"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5C0A2B7E91D34F10"]
+			description: [
+				"Throw Void Dust into a Botania &bMana Pool&r. Each one takes 3,000 mana and comes out as Arcane Alloy."
+				""
+				"Arcane Alloy is the magic half of the bridge: tech machines below need it."
+			]
+			id: "5C0A2B7E91D34F20"
+			rewards: [{
+				id: "5C0A2B7E91D34F21"
+				type: "xp"
+				xp: 100
+			}]
+			subtitle: "Magic's half of the bridge"
+			tasks: [{
+				id: "5C0A2B7E91D34F22"
+				item: "skyorigins2core:arcane_alloy"
+				type: "item"
+			}]
+			title: "Arcane Alloy"
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5C0A2B7E91D34F20"]
+			description: [
+				"&6Gate: tech needs magic.&r"
+				""
+				"In SkyOrigins 2 the Metallurgic Infuser's osmium ingot is replaced with &dArcane Alloy&r. Even a tech-only player needs a mana pool to get here."
+			]
+			id: "5C0A2B7E91D34F30"
+			rewards: [{
+				id: "5C0A2B7E91D34F31"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "5C0A2B7E91D34F32"
+				item: "mekanism:metallurgic_infuser"
+				type: "item"
+			}]
+			title: "Metallurgic Infuser"
+			x: 4.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["5C0A2B7E91D34F20"]
+			description: [
+				"&6Gate: tech needs magic.&r"
+				""
+				"In SkyOrigins 2 the Enrichment Chamber's two iron ingots are replaced with &dArcane Alloy&r."
+			]
+			id: "5C0A2B7E91D34F40"
+			rewards: [{
+				id: "5C0A2B7E91D34F41"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "5C0A2B7E91D34F42"
+				item: "mekanism:enrichment_chamber"
+				type: "item"
+			}]
+			title: "Enrichment Chamber"
+			x: 4.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["5C0A2B7E91D34F30"]
+			description: [
+				"Put Arcane Alloy in a Metallurgic Infuser with &credstone&r (20 infuse units) to make a Resonant Circuit."
+				""
+				"Resonant Circuits are the tech half of the bridge: Botania's altars below need them."
+			]
+			id: "5C0A2B7E91D34F50"
+			rewards: [{
+				id: "5C0A2B7E91D34F51"
+				type: "xp"
+				xp: 100
+			}]
+			subtitle: "Tech's half of the bridge"
+			tasks: [{
+				id: "5C0A2B7E91D34F52"
+				item: "skyorigins2core:resonant_circuit"
+				type: "item"
+			}]
+			title: "Resonant Circuit"
+			x: 6.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["5C0A2B7E91D34F50"]
+			description: [
+				"&6Gate: magic needs tech.&r"
+				""
+				"In SkyOrigins 2 the Runic Altar needs a &bResonant Circuit&r underneath. Even a magic-only player needs a Metallurgic Infuser to get here."
+			]
+			id: "5C0A2B7E91D34F60"
+			rewards: [{
+				id: "5C0A2B7E91D34F61"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "5C0A2B7E91D34F62"
+				item: "botania:runic_altar"
+				type: "item"
+			}]
+			title: "Runic Altar"
+			x: 8.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["5C0A2B7E91D34F60"]
+			description: [
+				"&6Gate: magic needs tech.&r"
+				""
+				"In SkyOrigins 2 the Terrestrial Agglomeration Plate's middle lapis block is replaced with a &bResonant Circuit&r."
+			]
+			id: "5C0A2B7E91D34F70"
+			rewards: [{
+				id: "5C0A2B7E91D34F71"
+				type: "xp"
+				xp: 200
+			}]
+			tasks: [{
+				id: "5C0A2B7E91D34F72"
+				item: "botania:terra_plate"
+				type: "item"
+			}]
+			title: "Terrestrial Agglomeration Plate"
+			x: 10.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["5C0A2B7E91D34F50"]
+			description: [
+				"Arcane Alloy, Resonant Circuits, Mana Pearls and a Steel Casing make the Void Condenser."
+				""
+				"It runs on both Forge Energy and Botania mana, and slowly condenses sieve materials out of the void."
+			]
+			id: "5C0A2B7E91D34F80"
+			rewards: [{
+				id: "5C0A2B7E91D34F81"
+				type: "xp"
+				xp: 200
+			}]
+			subtitle: "Both sides, one machine"
+			tasks: [{
+				id: "5C0A2B7E91D34F82"
+				item: "skyorigins2core:void_condenser"
+				type: "item"
+			}]
+			title: "Void Condenser"
+			x: 8.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["5C0A2B7E91D34F20"]
+			description: [
+				"Void Dust, dirt and an Arcane Alloy make a Void Island Core."
+				""
+				"Place it in open void and it grows a random new island with its own biome and mobs: void, desert, crimson crust or reef."
+			]
+			id: "5C0A2B7E91D34F90"
+			rewards: [{
+				id: "5C0A2B7E91D34F91"
+				type: "xp"
+				xp: 100
+			}]
+			subtitle: "Room to grow"
+			tasks: [{
+				id: "5C0A2B7E91D34F92"
+				item: "skyorigins2core:void_island_core"
+				type: "item"
+			}]
+			title: "Void Island Core"
+			x: 2.0d
+			y: 2.0d
+		}
+	]
+	title: "Arcane-Tech Bridge"
+}

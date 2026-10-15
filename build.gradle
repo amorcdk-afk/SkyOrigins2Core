@@ -123,6 +123,29 @@ def copyKubeJS = tasks.register('copyKubeJS', Copy) {
 }
 tasks.matching { it.name.startsWith('prepareRun') }.configureEach { dependsOn copyKubeJS }
 
+// The pack's FTB Quests live in ftbquests/quests in the repo. Link run/config/ftbquests/quests to that folder
+// (a directory junction on Windows) so quests edited in game with FTB Quests' edit mode are saved straight
+// into the repo. Only created when missing; an existing real folder there is left alone.
+def linkQuests = tasks.register('linkQuests') {
+    doLast {
+        def target = file('ftbquests/quests').toPath()
+        def link = file('run/config/ftbquests/quests').toPath()
+        if (java.nio.file.Files.exists(link, java.nio.file.LinkOption.NOFOLLOW_LINKS)) {
+            if (!link.toRealPath().equals(target.toRealPath())) {
+                logger.warn("run/config/ftbquests/quests is not linked to ftbquests/quests; move it away to link the repo's quests")
+            }
+            return
+        }
+        java.nio.file.Files.createDirectories(link.parent)
+        if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+            exec { commandLine 'cmd', '/c', 'mklink', '/J', link.toString(), target.toString() }
+        } else {
+            java.nio.file.Files.createSymbolicLink(link, target)
+        }
+    }
+}
+tasks.matching { it.name.startsWith('prepareRun') }.configureEach { dependsOn linkQuests }
+
 repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
@@ -143,6 +166,7 @@ def devMods = [
         'Botania', 'Patchouli', 'curios-forge',             // mana infusion (Arcane Alloy)
         'Mekanism-', 'MekanismGenerators',                  // machines (Resonant Circuit)
         'jei-1.20.1', 'mezz_config',                        // recipe viewer
+        'ftb-quests-forge', 'ftb-teams-forge', 'ftb-library-forge',  // quest book (gate quests)
 ]
 
 dependencies {

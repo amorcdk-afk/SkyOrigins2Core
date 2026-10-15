@@ -10,7 +10,10 @@ link; they are listed at the end with their page URL to download by hand.
 
 Usage (PowerShell):
     $env:CF_API_KEY = "<your key>"
-    python tools/download_mods.py [output-folder]
+    python tools/download_mods.py [output-folder] [--only slug,slug,...]
+
+--only downloads just those slugs (plus their dependencies), e.g.
+    python tools/download_mods.py --only ftb-quests-forge,ftb-teams-forge
 """
 
 import hashlib
@@ -100,12 +103,20 @@ def download(file_info, out_dir):
 def main():
     if not os.environ.get("CF_API_KEY"):
         sys.exit("Set the CF_API_KEY environment variable first.")
-    out_dir = sys.argv[1] if len(sys.argv) > 1 else "pack-mods"
+    args = sys.argv[1:]
+    slugs = MODS
+    if "--only" in args:
+        i = args.index("--only")
+        slugs = [s for s in args[i + 1].split(",") if s] if i + 1 < len(args) else []
+        del args[i:i + 2]
+        if not slugs:
+            sys.exit("--only needs a comma-separated list of CurseForge slugs.")
+    out_dir = args[0] if args else "pack-mods"
     os.makedirs(out_dir, exist_ok=True)
 
     queue = []
     not_found = []
-    for slug in MODS:
+    for slug in slugs:
         mod = find_mod_by_slug(slug)
         if mod:
             queue.append((mod["id"], mod["name"], mod["links"]["websiteUrl"], "list"))
