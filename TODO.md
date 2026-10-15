@@ -12,7 +12,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [ ] Decide the base modlist for 1.20.1 (Create, Mekanism, Botania, Ars Nouveau, Ex Nihilo: Sequentia, FTB Quests, KubeJS, Skyblock Builder, ...)
 
 ## 1. Island Cores — GO WITH CHANGES
-- [ ] **Spawn test first:** one throwaway island + one custom biome on a LAN/dedicated server
+- [ ] **Spawn test first:** one throwaway island + one custom biome on a LAN/dedicated server — harness and procedure in [`docs/spawn-test.md`](docs/spawn-test.md)
   - [ ] Mobs actually spawn on a tiny void island at an acceptable rate
   - [ ] Biome survives relog and chunk unload
   - [ ] Clients see the biome change without rejoining
