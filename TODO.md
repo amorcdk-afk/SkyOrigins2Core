@@ -15,7 +15,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 ## 1. Island Cores — GO WITH CHANGES
 - [ ] **Spawn test first:** Void Island Core (`void_island` + `void_isle` biome) on a LAN/dedicated server
   - [x] Mobs actually spawn on a tiny void island (via `IslandSpawner`; tune rate/caps after more play)
-  - [ ] Biome survives relog and chunk unload
+  - [x] Biome survives relog and chunk unload (checked 2026-10-15)
   - [x] Clients see the biome change without rejoining
 - [x] Custom datapack biomes that list spawns directly — `void_isle`, `desert_isle`, `crust_isle` (blazes without a fortress), `reef_isle` (guardians and drowned in a 2-deep water pool; islands support an optional `pool`, placed last so it can't spill)
 - [x] Cores grow a random island from a weighted pool (`data/<ns>/island_pools/*.json`); Void Island Core: void ×2, desert ×1, crust ×1, reef ×1
