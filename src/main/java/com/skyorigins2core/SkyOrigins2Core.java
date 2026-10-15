@@ -4,9 +4,11 @@ import com.mojang.logging.LogUtils;
 import com.skyorigins2core.island.IslandCoreBlock;
 import com.skyorigins2core.island.IslandCoreBlockEntity;
 import com.skyorigins2core.island.IslandDefinitions;
+import com.skyorigins2core.island.IslandSpawner;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -17,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -76,5 +79,10 @@ public class SkyOrigins2Core
 
         // Load island definitions from data packs on server start and /reload
         MinecraftForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> event.addListener(new IslandDefinitions()));
+        // Spawn mobs on grown islands, which vanilla spawning almost never reaches
+        MinecraftForge.EVENT_BUS.addListener((TickEvent.LevelTickEvent event) -> {
+            if (event.phase == TickEvent.Phase.END && event.level instanceof ServerLevel level)
+                IslandSpawner.tick(level);
+        });
     }
 }

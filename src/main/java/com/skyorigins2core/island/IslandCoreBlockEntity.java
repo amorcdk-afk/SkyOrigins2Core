@@ -71,6 +71,7 @@ public class IslandCoreBlockEntity extends BlockEntity
     private void finish(ServerLevel level, IslandDefinition definition)
     {
         BiomeStamper.stamp(level, worldPosition, definition);
+        IslandRegistry.get(level).add(worldPosition, definition.radius());
         level.playSound(null, worldPosition, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 0.8F);
         // Replacing the core removes this block entity
         level.setBlockAndUpdate(worldPosition, definition.surface().defaultBlockState());

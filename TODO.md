@@ -18,7 +18,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
   - [ ] Biome survives relog and chunk unload
   - [ ] Clients see the biome change without rejoining
 - [x] Custom datapack biomes that list spawns directly — `void_isle` done; reef/crust isles later (vanilla biomes won't give guardians/blazes, those are structure spawns)
-- [ ] Fallback if spawn rates are too low: core makes local spawn attempts on its own island
+- [x] Fallback if spawn rates are too low: grown islands make their own spawn attempts (`IslandSpawner`) — needed, vanilla spawning didn't reach the island in testing
 - [x] Island Core block + JSON definition per island (`data/<ns>/islands/*.json`: shape, blocks, biome, speed)
 - [x] Growth spread over many ticks, with a lag cap (≤64 blocks/tick, default 8)
 - [ ] Hand-built island templates (NBT) instead of the procedural disc, once the shape is proven
