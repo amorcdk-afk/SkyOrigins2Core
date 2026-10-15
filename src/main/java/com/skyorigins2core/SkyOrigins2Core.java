@@ -56,6 +56,7 @@ public class SkyOrigins2Core
                             .strength(-1.0F, 3600000.0F)
                             .noLootTable()
                             .lightLevel(state -> 7)
+                            .noOcclusion() // open frame model: don't hide neighbouring blocks' faces
                             .sound(SoundType.AMETHYST)));
     public static final RegistryObject<Item> VOID_ISLAND_CORE_ITEM = ITEMS.register("void_island_core",
             () -> new BlockItem(VOID_ISLAND_CORE.get(), new Item.Properties()));
