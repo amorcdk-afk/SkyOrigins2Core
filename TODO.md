@@ -59,7 +59,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Player mana: per-player pool, regen, `max_mana` / `mana_regen` attributes, XP-style blue mana bar above the XP bar, `/skyorigins mana`
 - [x] Void Charge energy API (1 VC = 4 FE): capability, `VoidChargeStorage`, `VoidCharge` helpers — API only, no machines in this mod (decided 2026-10-15)
 - [x] Publish to local maven with `gradlew publish` (`mcmodsrepo/`, artifact `com.skyorigins2core:skyorigins2core`)
-- [ ] In game: check the mana bar's position with hearts/armor/hunger, and that it survives death and relog
+- [x] In game: mana bar sits correctly with hearts/armor/hunger and survives death and relog (checked 2026-10-15)
 
 ## 5. Later / after release
 - [ ] Sky Events, trimmed: meteors only, landing as mini-islands in open void, no block damage, ore capped ~1 tier above current sieving. No damaging storms
