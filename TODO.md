@@ -33,9 +33,10 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
   main start **SkyFactory** (one oak on one grass block), option **Botanist's Grove** (GO WITH CHANGES)
 - [x] Both templates built by `tools/make_templates.py` into `config/skyblockbuilder/templates/`; `config/` is copied into `run/config` before runs; players may create their own team (`createOwnTeam`) so servers can pick a start
 - [ ] In game: create a Skyblock world with each start and check the island, spawn point and Grove chest
-- [ ] Grove bootstrap: decide how Grove players get stone (Pure Daisy -> livingrock -> mana pool) and copper (mana spreader) without sieving
+- [x] Grove bootstrap (mana makes them, `kubejs/server_scripts/botanists_grove.js`): Pure Daisy dirt -> stone (2x normal time); mana infusion stone -> copper ore chunk (1,000), cobblestone -> iron ore chunk (1,500); the chest has 1 copper ingot for the first spreader and a water bucket for the apothecary
 - [ ] Grove rules from the verdict: no recipe removals or nerfs; new mana recipes priced at or above sieving so the SkyFactory start gains no shortcut; normal Orechid only
-- [ ] Grove first-hour quest chapter (flowers, apothecary, Pure Daisy, spreader, pool)
+- [x] Grove first-hour quest chapter (`ftbquests/quests/chapters/botanists_grove.snbt`, 9 quests)
+- [ ] Playtest the Grove mana prices against the SkyFactory start (does a classic player with a cobble generator gain anything?)
 - [ ] Grove kill test: cut it if hour one is mostly waiting on mana, or it merges into sieving before ~90 min
 - [ ] New origin's first 1–3 hours must use a genuinely different resource method
 - [ ] Playtest it end to end; cut the feature if it isn't clearly fun and different

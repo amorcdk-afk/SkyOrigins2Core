@@ -172,7 +172,8 @@ def skyfactory():
 def botanists_grove():
     """Optional start: a 7x7 grass island with mystical flowers, a 2-block infinite water pond,
     a petal apothecary, a fence railing so thrown items don't fall into the void, and a chest
-    with an oak sapling, seeds and bone meal. No spreader or pool: the player builds those."""
+    with an oak sapling, seeds, bone meal, a water bucket and one copper ingot (for the first Mana Spreader).
+    No spreader or pool: the player builds those. Grove recipes: kubejs/server_scripts/botanists_grove.js"""
     s = Structure()
     lo, hi = 1, 7  # island spans x/z 1..7, leaving a 1-block margin
     for x in range(lo, hi + 1):
@@ -204,6 +205,8 @@ def botanists_grove():
         ("minecraft:oak_sapling", 1),
         ("minecraft:wheat_seeds", 2),
         ("minecraft:bone_meal", 16),
+        ("minecraft:water_bucket", 1),  # fills the Petal Apothecary; refill it from the pond
+        ("minecraft:copper_ingot", 1),  # for the first Mana Spreader; later copper comes from mana
     ], facing="north"))
     s.save("botanists_grove.nbt")
     print("  SPAWN botanists_grove: [4, 2, 4] (island centre)")

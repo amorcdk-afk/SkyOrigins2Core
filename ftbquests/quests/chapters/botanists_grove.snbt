@@ -1,0 +1,214 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "botanists_grove"
+	group: ""
+	icon: "botania:pure_daisy"
+	id: "6A1B2C3D4E5F6A01"
+	order_index: 1
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"Break a mystical flower and craft it into petals. Each flower gives 2."
+				""
+				"Bone meal on grass grows vanilla flowers only. For more mystical flowers, craft &aFloral Fertilizer&r and use it on grass."
+			]
+			id: "6A1B2C3D4E5F6A10"
+			rewards: [{
+				id: "6A1B2C3D4E5F6A11"
+				type: "xp"
+				xp: 25
+			}]
+			tasks: [{
+				id: "6A1B2C3D4E5F6A12"
+				item: "botania:white_petal"
+				type: "item"
+			}]
+			title: "Petals"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6A1B2C3D4E5F6A10"]
+			description: [
+				"Fill the &ePetal Apothecary&r with the water bucket from your chest (refill it from the pond), then throw in 4 white petals and a wheat seed."
+				""
+				"Plant the Pure Daisy on grass. It slowly turns the 8 blocks around it into new ones."
+			]
+			id: "6A1B2C3D4E5F6A20"
+			rewards: [{
+				id: "6A1B2C3D4E5F6A21"
+				type: "xp"
+				xp: 50
+			}]
+			subtitle: "Your first Botania flower"
+			tasks: [{
+				id: "6A1B2C3D4E5F6A22"
+				item: "botania:pure_daisy"
+				type: "item"
+			}]
+			title: "Pure Daisy"
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6A1B2C3D4E5F6A20"]
+			description: [
+				"In SkyOrigins 2 the Pure Daisy turns &6dirt into stone&r. Dig the dirt under the grass and place it around the Daisy."
+				""
+				"It is slower than its other conversions; stone is scarce on the Grove for a reason."
+			]
+			id: "6A1B2C3D4E5F6A30"
+			rewards: [{
+				id: "6A1B2C3D4E5F6A31"
+				type: "xp"
+				xp: 50
+			}]
+			tasks: [{
+				count: 8L
+				id: "6A1B2C3D4E5F6A32"
+				item: "minecraft:stone"
+				type: "item"
+			}]
+			title: "Stone from Dirt"
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6A1B2C3D4E5F6A30"]
+			description: [
+				"Place logs and stone around the Pure Daisy: it turns logs into livingwood and stone into livingrock."
+				""
+				"Don't spend all your logs: you need them for fuel."
+			]
+			id: "6A1B2C3D4E5F6A40"
+			rewards: [{
+				id: "6A1B2C3D4E5F6A41"
+				type: "xp"
+				xp: 50
+			}]
+			tasks: [{
+				count: 5L
+				id: "6A1B2C3D4E5F6A42"
+				item: "botania:livingrock"
+				type: "item"
+			}]
+			title: "Livingwood and Livingrock"
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6A1B2C3D4E5F6A20"]
+			description: [
+				"Petals in the apothecary: 2 brown, 1 red, 1 light gray. The Endoflame burns items dropped next to it (logs, charcoal, coal) into mana."
+			]
+			id: "6A1B2C3D4E5F6A50"
+			rewards: [{
+				id: "6A1B2C3D4E5F6A51"
+				type: "xp"
+				xp: 50
+			}]
+			subtitle: "Mana from fuel"
+			tasks: [{
+				id: "6A1B2C3D4E5F6A52"
+				item: "botania:endoflame"
+				type: "item"
+			}]
+			title: "Endoflame"
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["6A1B2C3D4E5F6A20"]
+			description: [
+				"Petals: 2 blue, 2 cyan. Plant it next to water and it makes mana slowly, for free. It wilts after a few days, so keep making more."
+			]
+			id: "6A1B2C3D4E5F6A60"
+			rewards: [{
+				id: "6A1B2C3D4E5F6A61"
+				type: "xp"
+				xp: 50
+			}]
+			subtitle: "Mana from water"
+			tasks: [{
+				id: "6A1B2C3D4E5F6A62"
+				item: "botania:hydroangeas"
+				type: "item"
+			}]
+			title: "Hydroangeas"
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["6A1B2C3D4E5F6A40"]
+			description: [
+				"Livingwood, a petal and a &6copper ingot&r. Your chest has exactly one copper ingot for this; after that, copper comes from mana."
+			]
+			id: "6A1B2C3D4E5F6A70"
+			rewards: [{
+				id: "6A1B2C3D4E5F6A71"
+				type: "xp"
+				xp: 75
+			}]
+			tasks: [{
+				id: "6A1B2C3D4E5F6A72"
+				item: "botania:mana_spreader"
+				type: "item"
+			}]
+			title: "Mana Spreader"
+			x: 8.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["6A1B2C3D4E5F6A40"]
+			description: [
+				"5 livingrock make a Mana Pool. Point the spreader at it and your flowers at the spreader (use a Wand of the Forest to bind them)."
+				""
+				"Several flower-and-spreader setups can fill the same pool, so a team can build at once."
+			]
+			id: "6A1B2C3D4E5F6A80"
+			rewards: [{
+				id: "6A1B2C3D4E5F6A81"
+				type: "xp"
+				xp: 75
+			}]
+			tasks: [{
+				id: "6A1B2C3D4E5F6A82"
+				item: "botania:mana_pool"
+				type: "item"
+			}]
+			title: "Mana Pool"
+			x: 8.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["6A1B2C3D4E5F6A70", "6A1B2C3D4E5F6A80"]
+			description: [
+				"In SkyOrigins 2, throwing items into a full enough Mana Pool makes ore:"
+				"- &7Stone&r -> Copper Ore Chunk (1,000 mana)"
+				"- &7Cobblestone&r -> Iron Ore Chunk (1,500 mana)"
+				""
+				"4 chunks craft an ore block; smelt it. It costs more than sieving would, but you have no gravel yet."
+			]
+			id: "6A1B2C3D4E5F6A90"
+			rewards: [{
+				id: "6A1B2C3D4E5F6A91"
+				type: "xp"
+				xp: 100
+			}]
+			subtitle: "The Grove's way to metal"
+			tasks: [{
+				count: 4L
+				id: "6A1B2C3D4E5F6A92"
+				item: "exdeorum:copper_ore_chunk"
+				type: "item"
+			}]
+			title: "Ore from Mana"
+			x: 10.0d
+			y: 0.0d
+		}
+	]
+	subtitle: ["For the Botanist's Grove start: your first hour, with flowers instead of sieves"]
+	title: "Botanist's Grove"
+}
