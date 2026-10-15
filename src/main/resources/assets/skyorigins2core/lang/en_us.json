@@ -1,6 +1,8 @@
 {
   "itemGroup.skyorigins2core": "SkyOrigins 2",
   "block.skyorigins2core.void_island_core": "Void Island Core",
+  "block.skyorigins2core.void_condenser": "Void Condenser",
+  "block.skyorigins2core.void_condenser.status": "Energy %s / %s FE · Mana %s / %s · Cycle %s%% · Buffer %s items",
   "item.skyorigins2core.void_dust": "Void Dust",
   "item.skyorigins2core.arcane_alloy": "Arcane Alloy",
   "item.skyorigins2core.resonant_circuit": "Resonant Circuit",

@@ -1,0 +1,12 @@
+{
+  "ticks": 200,
+  "energy_per_tick": 40,
+  "mana": 1500,
+  "outputs": [
+    { "item": "minecraft:cobblestone", "count": 4, "weight": 30 },
+    { "item": "minecraft:gravel", "count": 2, "weight": 25 },
+    { "item": "minecraft:sand", "count": 2, "weight": 20 },
+    { "item": "exdeorum:dust", "count": 2, "weight": 20 },
+    { "item": "skyorigins2core:void_dust", "count": 1, "weight": 5 }
+  ]
+}

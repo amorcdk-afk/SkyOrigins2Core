@@ -24,7 +24,8 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Island Core block + JSON definition per island (`data/<ns>/islands/*.json`: shape, blocks, biome, speed)
 - [x] Growth spread over many ticks, with a lag cap (≤64 blocks/tick, default 8)
 - [ ] Hand-built island templates (NBT) instead of the procedural disc, once the shape is proven
-- [ ] Ship exactly 3 islands; cores cost processed materials (no recipe yet — creative tab / `/give` only)
+- [x] Ship exactly 3 islands; cores cost processed materials — Void Island Core: 4 Void Dust + 4 dirt + 1 Arcane Alloy (`kubejs/server_scripts/island_cores.js`)
+- [x] GameTests (`ModGameTests`, run with `gradlew runGameTestServer`): core grows and registers; condenser produces output
 
 ## 2. Void Origins — GO WITH CHANGES
 - [ ] Classic default start + 1 new origin, built with Skyblock Builder templates, NBT, loot tables and quests (no custom Java)
@@ -44,8 +45,9 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [ ] A quest explaining each gate (needs FTB Quests in the dev environment)
 - [x] Renamed our "Infused Alloy" to Arcane Alloy (`arcane_alloy`): Mekanism already has an Infused Alloy
 - [ ] Playtest with one tech-only and one magic-only player; cut any gate taking the "wrong-side" player > ~15 min
-- [ ] Write down the Void Condenser's output rate vs. a sieve before building it
-- [ ] Stretch: single-block Condenser (Forge Energy + Botania mana only). Ars Nouveau and multiblock after release
+- [x] Write down the Void Condenser's output rate vs. a sieve before building it — makes sieve *inputs*, not ores: 1 roll per 10 s (8,000 FE + 1,500 mana) ≈ 15 blocks/min, ~1 Void Dust per 3 min; tunable in `data/skyorigins2core/void_condenser/default.json`
+- [x] Single-block Void Condenser (Forge Energy + Botania mana spreader input, 9-slot extract-only buffer); recipe in `kubejs/server_scripts/void_condenser.js`
+- [ ] Ars Nouveau (Source) input and multiblock version — after release
 
 ## 4. Multiplayer — GO WITH CHANGES (config, not code)
 - [ ] Check Skyblock Builder teams and FTB Teams stay in sync (or find/write a bridge)

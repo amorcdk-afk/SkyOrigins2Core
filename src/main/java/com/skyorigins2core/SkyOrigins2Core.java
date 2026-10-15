@@ -1,6 +1,9 @@
 package com.skyorigins2core;
 
 import com.mojang.logging.LogUtils;
+import com.skyorigins2core.condenser.CondenserSettings;
+import com.skyorigins2core.condenser.VoidCondenserBlock;
+import com.skyorigins2core.condenser.VoidCondenserBlockEntity;
 import com.skyorigins2core.island.IslandCommands;
 import com.skyorigins2core.island.IslandCoreBlock;
 import com.skyorigins2core.island.IslandCoreBlockEntity;
@@ -74,6 +77,19 @@ public class SkyOrigins2Core
     // Machine-made part that magic recipes need
     public static final RegistryObject<Item> RESONANT_CIRCUIT = ITEMS.register("resonant_circuit", () -> new Item(new Item.Properties()));
 
+    // Void Condenser: Forge Energy + Botania mana -> sieve inputs; costs and outputs in data/skyorigins2core/void_condenser/
+    public static final RegistryObject<Block> VOID_CONDENSER = BLOCKS.register("void_condenser",
+            () -> new VoidCondenserBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BLACK)
+                    .strength(3.5F, 6.0F)
+                    .requiresCorrectToolForDrops()
+                    .lightLevel(state -> 4)
+                    .sound(SoundType.METAL)));
+    public static final RegistryObject<Item> VOID_CONDENSER_ITEM = ITEMS.register("void_condenser",
+            () -> new BlockItem(VOID_CONDENSER.get(), new Item.Properties()));
+    public static final RegistryObject<BlockEntityType<VoidCondenserBlockEntity>> VOID_CONDENSER_ENTITY = BLOCK_ENTITY_TYPES.register("void_condenser",
+            () -> BlockEntityType.Builder.of(VoidCondenserBlockEntity::new, VOID_CONDENSER.get()).build(null));
+
     public static final RegistryObject<CreativeModeTab> MAIN_TAB = CREATIVE_MODE_TABS.register("main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.skyorigins2core"))
             .icon(() -> VOID_ISLAND_CORE_ITEM.get().getDefaultInstance())
@@ -82,6 +98,7 @@ public class SkyOrigins2Core
                 output.accept(VOID_DUST.get());
                 output.accept(ARCANE_ALLOY.get());
                 output.accept(RESONANT_CIRCUIT.get());
+                output.accept(VOID_CONDENSER_ITEM.get());
             })
             .build());
 
@@ -99,6 +116,7 @@ public class SkyOrigins2Core
         MinecraftForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> {
             event.addListener(new IslandDefinitions());
             event.addListener(new IslandPools());
+            event.addListener(new CondenserSettings());
         });
         MinecraftForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> IslandCommands.register(event.getDispatcher()));
         // Spawn mobs on grown islands, which vanilla spawning almost never reaches

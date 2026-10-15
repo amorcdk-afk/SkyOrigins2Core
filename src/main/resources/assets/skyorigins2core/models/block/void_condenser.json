@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "skyorigins2core:block/void_condenser_top",
+    "bottom": "skyorigins2core:block/void_condenser_bottom",
+    "side": "skyorigins2core:block/void_condenser_side"
+  }
+}
