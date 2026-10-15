@@ -13,24 +13,43 @@ CASING = {
 }
 
 TEXTURES = {
-    # Machine casing with a window onto swirling void
-    "void_condenser_side": (CASING, [
+    # Plain machine casing for the frame: base, cap and pillars
+    "void_condenser_casing": (CASING, [
         "kkkkkkkkkkkkkkkk",
         "khhhhhhhhhhhhhgk",
-        "khbgggggggggbgdk",
+        "khbgggggggggggdk",
         "khgggggggggggddk",
-        "khggkkkkkkkkgddk",
-        "khggkvvpvvvkgddk",
-        "khggkvpqpvvkgddk",
-        "khggkvqwqpvkgddk",
-        "khggkvpqwqvkgddk",
-        "khggkvvpqpvkgddk",
-        "khggkvvvpvvkgddk",
-        "khggkkkkkkkkgddk",
         "khgggggggggggddk",
-        "khbgggggggggbddk",
+        "khgggggggggggddk",
+        "khgggggggggggddk",
+        "khggggggdgggggdk",
+        "khgggggggggggddk",
+        "khgggggggggggddk",
+        "khgggggggggggddk",
+        "khgggggggggggddk",
+        "khgggggggggggddk",
+        "khgggggggggggbdk",
         "kgdddddddddddddk",
         "kkkkkkkkkkkkkkkk",
+    ]),
+    # Two-armed void spiral for the floating orb (rendered full-bright)
+    "void_condenser_core": (CASING, [
+        "vvvvvvvvvvvvvvvv",
+        "vvvvvvvvvvvvvvvv",
+        "vvvvvvvvvppppvvv",
+        "vvvvvvvppppppppv",
+        "vvvvvvppqqqqpppp",
+        "vvvvvvpqqqqqpppp",
+        "vvvvvvqwwppppppp",
+        "ppvvvvwwwwvvpppp",
+        "ppppvvwwwwvvvvpp",
+        "pppppppwwqvvvvvv",
+        "ppppqqqqqpvvvvvv",
+        "ppppqqqqppvvvvvv",
+        "vppppppppvvvvvvv",
+        "vvvppppvvvvvvvvv",
+        "vvvvvvvvvvvvvvvv",
+        "vvvvvvvvvvvvvvvv",
     ]),
     # Round vent glowing from the condensing void inside
     "void_condenser_top": (CASING, [

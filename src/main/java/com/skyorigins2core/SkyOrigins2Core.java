@@ -84,6 +84,7 @@ public class SkyOrigins2Core
                     .strength(3.5F, 6.0F)
                     .requiresCorrectToolForDrops()
                     .lightLevel(state -> 4)
+                    .noOcclusion() // open frame model: don't hide neighbouring blocks' faces
                     .sound(SoundType.METAL)));
     public static final RegistryObject<Item> VOID_CONDENSER_ITEM = ITEMS.register("void_condenser",
             () -> new BlockItem(VOID_CONDENSER.get(), new Item.Properties()));
