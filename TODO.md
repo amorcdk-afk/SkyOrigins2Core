@@ -17,15 +17,15 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
   - [x] Mobs actually spawn on a tiny void island (via `IslandSpawner`; tune rate/caps after more play)
   - [ ] Biome survives relog and chunk unload
   - [x] Clients see the biome change without rejoining
-- [x] Custom datapack biomes that list spawns directly — `void_isle`, `desert_isle`, `crust_isle` (blazes without a fortress); reef isle needs water placement first (guardians only spawn in water)
-- [x] Cores grow a random island from a weighted pool (`data/<ns>/island_pools/*.json`); Void Island Core: void ×2, desert ×1, crust ×1
+- [x] Custom datapack biomes that list spawns directly — `void_isle`, `desert_isle`, `crust_isle` (blazes without a fortress), `reef_isle` (guardians and drowned in a 2-deep water pool; islands support an optional `pool`, placed last so it can't spill)
+- [x] Cores grow a random island from a weighted pool (`data/<ns>/island_pools/*.json`); Void Island Core: void ×2, desert ×1, crust ×1, reef ×1
 - [x] Islands grow bottom-up; sand/gravel on overhanging edges becomes the base block so it can't fall
 - [x] Fallback if spawn rates are too low: grown islands make their own spawn attempts (`IslandSpawner`) — needed, vanilla spawning didn't reach the island in testing
 - [x] Island Core block + JSON definition per island (`data/<ns>/islands/*.json`: shape, blocks, biome, speed)
 - [x] Growth spread over many ticks, with a lag cap (≤64 blocks/tick, default 8)
 - [ ] Hand-built island templates (NBT) instead of the procedural disc, once the shape is proven
 - [x] Ship exactly 3 islands; cores cost processed materials — Void Island Core: 4 Void Dust + 4 dirt + 1 Arcane Alloy (`kubejs/server_scripts/island_cores.js`)
-- [x] GameTests (`ModGameTests`, run with `gradlew runGameTestServer`): core grows and registers; condenser produces output
+- [x] GameTests (`ModGameTests`, run with `gradlew runGameTestServer`): core grows and registers; condenser produces output; reef pool stays inside its rim
 
 ## 2. Void Origins — GO WITH CHANGES
 - [ ] Classic default start + 1 new origin, built with Skyblock Builder templates, NBT, loot tables and quests (no custom Java)

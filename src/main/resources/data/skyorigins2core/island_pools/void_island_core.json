@@ -2,6 +2,7 @@
   "islands": [
     { "island": "skyorigins2core:void_island", "weight": 2 },
     { "island": "skyorigins2core:desert_island", "weight": 1 },
-    { "island": "skyorigins2core:crust_island", "weight": 1 }
+    { "island": "skyorigins2core:crust_island", "weight": 1 },
+    { "island": "skyorigins2core:reef_island", "weight": 1 }
   ]
 }

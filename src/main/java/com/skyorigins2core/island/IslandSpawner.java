@@ -5,6 +5,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -37,6 +38,8 @@ public final class IslandSpawner
     private static final int CAP_PER_CATEGORY = 4;
     // How far above or below the island's top a surface can be and still count as the island
     private static final int SURFACE_RANGE = 16;
+    // How many columns a water mob tries before giving up on finding water this attempt
+    private static final int WATER_ATTEMPTS = 4;
     private static final MobCategory[] CATEGORIES = { MobCategory.CREATURE, MobCategory.MONSTER };
 
     // Toggled by /skyorigins islands debug: shows each attempt's result on nearby players' action bars
@@ -85,25 +88,39 @@ public final class IslandSpawner
         if (level.getEntitiesOfClass(Mob.class, area, mob -> mob.getType().getCategory() == category).size() >= CAP_PER_CATEGORY)
             return name + ": island is full";
 
-        // A random column on the island, standing on whatever is on top of it
-        BlockPos column = center.offset(random.nextInt(2 * r + 1) - r, 0, random.nextInt(2 * r + 1) - r);
-        if (!level.isLoaded(column))
-            return name + ": column not loaded";
-        BlockPos pos = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, column);
-        if (Math.abs(pos.getY() - center.getY()) > SURFACE_RANGE)
-            return name + ": no island surface at " + pos.getX() + " " + pos.getZ();
-        if (level.hasNearbyAlivePlayer(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, MIN_PLAYER_DISTANCE))
-            return name + ": too close to a player";
-
-        Holder<Biome> biome = level.getBiome(pos);
+        // Pick the mob first, from the island's biome, then a spot that suits it
+        Holder<Biome> biome = level.getBiome(center.above());
         Optional<MobSpawnSettings.SpawnerData> entry = biome.value().getMobSettings().getMobs(category).getRandom(random);
         if (entry.isEmpty())
             return name + ": biome " + biome.unwrapKey().map(key -> key.location().toString()).orElse("?")
-                    + " at " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + " has no mobs of this kind";
+                    + " has no mobs of this kind";
         EntityType<?> type = entry.get().type;
         String mobName = EntityType.getKey(type).getPath();
+        boolean swims = SpawnPlacements.getPlacementType(type) == SpawnPlacements.Type.IN_WATER;
+
+        // Land mobs stand on top of a random column. Water mobs need water, which only part of the island
+        // has, so they try a few columns and use the top water block of the first one with water.
+        BlockPos pos = null;
+        for (int attempt = 0; attempt < (swims ? WATER_ATTEMPTS : 1) && pos == null; attempt++)
+        {
+            BlockPos column = center.offset(random.nextInt(2 * r + 1) - r, 0, random.nextInt(2 * r + 1) - r);
+            if (!level.isLoaded(column))
+                continue;
+            BlockPos top = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, column);
+            if (Math.abs(top.getY() - center.getY()) > SURFACE_RANGE)
+                continue;
+            if (!swims)
+                pos = top;
+            else if (level.getFluidState(top.below()).is(FluidTags.WATER))
+                pos = top.below();
+        }
+        if (pos == null)
+            return mobName + (swims ? ": no water found" : ": no island surface found");
+        if (level.hasNearbyAlivePlayer(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, MIN_PLAYER_DISTANCE))
+            return mobName + ": too close to a player";
+
         if (!SpawnPlacements.checkSpawnRules(type, level, MobSpawnType.NATURAL, pos, random))
-            return mobName + ": spawn rules failed (light or ground)";
+            return mobName + ": spawn rules failed (light, ground or water depth)";
         if (!level.noCollision(type.getAABB(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5)))
             return mobName + ": no room";
 

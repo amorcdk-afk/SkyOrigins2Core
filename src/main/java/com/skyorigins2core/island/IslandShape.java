@@ -50,6 +50,8 @@ public final class IslandShape
 
         // Bottom layer first, each layer growing from the centre outwards, so every block lands on the one below
         List<Placement> placements = new ArrayList<>();
+        // Pool blocks go last, once the rim and floor around them exist, so water can't spill over an unfinished edge
+        List<Placement> pool = new ArrayList<>();
         BlockState base = definition.base().defaultBlockState();
         for (int layer = depth - 1; layer >= 0; layer--)
         {
@@ -59,13 +61,26 @@ public final class IslandShape
             for (BlockPos pos : layers.get(layer))
             {
                 if (pos.equals(core))
-                    continue; // the core itself sits here and becomes surface when finished
+                    continue; // the core itself sits here and becomes coreBlock() when finished
+                if (inPool(definition, core, pos, layer))
+                {
+                    pool.add(new Placement(pos, definition.pool().get().block().defaultBlockState()));
+                    continue;
+                }
                 // Sand and gravel on an overhanging edge would fall into the void; use the base block there
                 boolean unsupported = state.getBlock() instanceof FallingBlock && !island.contains(pos.below());
                 placements.add(new Placement(pos, unsupported ? base : state));
             }
         }
+        placements.addAll(pool);
         return placements;
+    }
+
+    private static boolean inPool(IslandDefinition definition, BlockPos core, BlockPos pos, int layer)
+    {
+        return definition.pool()
+                .map(pool -> layer < pool.depth() && horizontalDistSqr(pos, core) <= pool.radius() * pool.radius())
+                .orElse(false);
     }
 
     // SplitMix64 finaliser: spreads nearby inputs into unrelated-looking outputs
