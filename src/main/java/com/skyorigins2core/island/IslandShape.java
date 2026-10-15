@@ -1,5 +1,6 @@
 package com.skyorigins2core.island;
 
+import com.skyorigins2core.SkyOrigins2Core;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,6 +21,13 @@ public final class IslandShape
 
     public static List<Placement> plan(IslandDefinition definition, BlockPos core)
     {
+        if (definition.template().isPresent())
+        {
+            IslandTemplates.Template template = IslandTemplates.get(definition.template().get());
+            if (template != null)
+                return planTemplate(template, core);
+            SkyOrigins2Core.LOGGER.error("Island template {} isn't loaded; growing a plain island instead", definition.template().get());
+        }
         int radius = definition.radius();
         int depth = definition.depth();
         long seed = core.asLong();
@@ -74,6 +82,22 @@ public final class IslandShape
         }
         placements.addAll(pool);
         return placements;
+    }
+
+    // Bottom layer first, each layer from the centre outwards, so every block lands on the one below.
+    // Anything holding a fluid (water, waterlogged coral) goes last, once the rims around it exist.
+    private static List<Placement> planTemplate(IslandTemplates.Template template, BlockPos core)
+    {
+        Comparator<Placement> order = Comparator.comparingInt((Placement p) -> p.pos().getY())
+                .thenComparingInt(p -> horizontalDistSqr(p.pos(), core));
+        List<Placement> solid = new ArrayList<>();
+        List<Placement> fluid = new ArrayList<>();
+        for (Placement block : template.blocks())
+            (block.state().getFluidState().isEmpty() ? solid : fluid).add(new Placement(core.offset(block.pos()), block.state()));
+        solid.sort(order);
+        fluid.sort(order);
+        solid.addAll(fluid);
+        return solid;
     }
 
     private static boolean inPool(IslandDefinition definition, BlockPos core, BlockPos pos, int layer)

@@ -3,17 +3,23 @@ package com.skyorigins2core.island;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Optional;
 
-// One island type, loaded from data/<namespace>/islands/<name>.json
+// One island type, loaded from data/<namespace>/islands/<name>.json. With a "template" the island is a
+// hand-shaped structure (IslandTemplates); without one it's a procedural disc built from surface/filler/base.
+// radius and depth should cover the whole island either way: the biome stamp and mob spawning use them.
 public record IslandDefinition(
         int radius,
         int depth,
+        Optional<ResourceLocation> template,
         int fillerDepth,
         Block surface,
         Block filler,
@@ -36,19 +42,25 @@ public record IslandDefinition(
     public static final Codec<IslandDefinition> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Codec.intRange(1, 16).fieldOf("radius").forGetter(IslandDefinition::radius),
             Codec.intRange(1, 32).fieldOf("depth").forGetter(IslandDefinition::depth),
+            ResourceLocation.CODEC.optionalFieldOf("template").forGetter(IslandDefinition::template),
+            // Procedural shape only (ignored when there's a template)
             Codec.intRange(0, 32).optionalFieldOf("filler_depth", 2).forGetter(IslandDefinition::fillerDepth),
-            ForgeRegistries.BLOCKS.getCodec().fieldOf("surface").forGetter(IslandDefinition::surface),
-            ForgeRegistries.BLOCKS.getCodec().fieldOf("filler").forGetter(IslandDefinition::filler),
-            ForgeRegistries.BLOCKS.getCodec().fieldOf("base").forGetter(IslandDefinition::base),
+            ForgeRegistries.BLOCKS.getCodec().optionalFieldOf("surface", Blocks.GRASS_BLOCK).forGetter(IslandDefinition::surface),
+            ForgeRegistries.BLOCKS.getCodec().optionalFieldOf("filler", Blocks.DIRT).forGetter(IslandDefinition::filler),
+            ForgeRegistries.BLOCKS.getCodec().optionalFieldOf("base", Blocks.STONE).forGetter(IslandDefinition::base),
             Pool.CODEC.optionalFieldOf("pool").forGetter(IslandDefinition::pool),
             ResourceKey.codec(Registries.BIOME).optionalFieldOf("biome").forGetter(IslandDefinition::biome),
             // Growth speed, capped so a core can never place more than 64 blocks in one tick
             Codec.intRange(1, 64).optionalFieldOf("blocks_per_tick", 8).forGetter(IslandDefinition::blocksPerTick)
     ).apply(instance, IslandDefinition::new));
 
-    // What the core's own spot becomes when growth finishes: the pool if there is one, otherwise the surface
-    public Block coreBlock()
+    // What the core's own spot becomes when growth finishes: the template's anchor block, else the pool
+    // if there is one, otherwise the surface
+    public BlockState coreState()
     {
-        return pool.map(Pool::block).orElse(surface);
+        IslandTemplates.Template shape = template.map(IslandTemplates::get).orElse(null);
+        if (shape != null)
+            return shape.anchor();
+        return pool.map(Pool::block).orElse(surface).defaultBlockState();
     }
 }

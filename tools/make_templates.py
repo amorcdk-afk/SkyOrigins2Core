@@ -83,6 +83,9 @@ class Structure:
         return b[0] if b else None
 
     def save(self, filename):
+        self.save_to(OUT_DIR, filename)
+
+    def save_to(self, out_dir, filename, extra=None):
         xs, ys, zs = zip(*self.blocks)
         size = [max(xs) + 1, max(ys) + 1, max(zs) + 1]
         palette, index, blocks = [], {}, []
@@ -99,13 +102,15 @@ class Structure:
             if nbt:
                 block["nbt"] = nbt
             blocks.append(block)
-        write_nbt(os.path.join(OUT_DIR, filename), {
+        root = {
             "DataVersion": Int(DATA_VERSION),
             "size": [Int(s) for s in size],
             "palette": palette,
             "blocks": blocks,
             "entities": [],
-        })
+        }
+        root.update(extra or {})
+        write_nbt(os.path.join(out_dir, filename), root)
         print(f"{filename}: size {size}, {len(blocks)} blocks")
 
 

@@ -11,6 +11,7 @@ import com.skyorigins2core.island.IslandCommands;
 import com.skyorigins2core.island.IslandCoreBlock;
 import com.skyorigins2core.island.IslandCoreBlockEntity;
 import com.skyorigins2core.island.IslandDefinitions;
+import com.skyorigins2core.island.IslandTemplates;
 import com.skyorigins2core.island.IslandPools;
 import com.skyorigins2core.island.IslandSpawner;
 import com.skyorigins2core.mana.ManaCommands;
@@ -136,6 +137,7 @@ public class SkyOrigins2Core
         // Load island definitions from data packs on server start and /reload
         MinecraftForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> {
             event.addListener(new IslandDefinitions());
+            event.addListener(new IslandTemplates());
             event.addListener(new IslandPools());
             event.addListener(new CondenserSettings());
         });

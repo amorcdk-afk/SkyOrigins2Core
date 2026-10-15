@@ -23,7 +23,8 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Fallback if spawn rates are too low: grown islands make their own spawn attempts (`IslandSpawner`) — needed, vanilla spawning didn't reach the island in testing
 - [x] Island Core block + JSON definition per island (`data/<ns>/islands/*.json`: shape, blocks, biome, speed)
 - [x] Growth spread over many ticks, with a lag cap (≤64 blocks/tick, default 8)
-- [ ] Hand-built island templates (NBT) instead of the procedural disc, once the shape is proven
+- [x] Hand-shaped island templates instead of the procedural disc: `tools/make_islands.py` builds `structures/islands/*.nbt` (void: oak tree and mossy boulder; desert: cacti and a broken pillar; crust: huge crimson fungus; reef: sunken pool with sea life); island JSONs point at them with `template`, the disc remains as a fallback; preview with `tools/render_structure.py`; GameTest checks every template loads with nothing that could fall
+- [ ] In game: grow each island from a Void Island Core and check it looks right and the reef pool holds
 - [x] Ship exactly 3 islands; cores cost processed materials — Void Island Core: 4 Void Dust + 4 dirt + 1 Arcane Alloy (`kubejs/server_scripts/island_cores.js`)
 - [x] GameTests (`ModGameTests`, run with `gradlew runGameTestServer`): core grows and registers; condenser produces output; reef pool stays inside its rim
 

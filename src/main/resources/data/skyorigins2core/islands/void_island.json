@@ -1,10 +1,7 @@
 {
-  "radius": 6,
-  "depth": 6,
-  "filler_depth": 2,
-  "surface": "minecraft:grass_block",
-  "filler": "minecraft:dirt",
-  "base": "minecraft:stone",
+  "template": "skyorigins2core:islands/void_island",
+  "radius": 8,
+  "depth": 8,
   "biome": "skyorigins2core:void_isle",
   "blocks_per_tick": 8
 }

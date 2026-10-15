@@ -1,10 +1,7 @@
 {
-  "radius": 6,
-  "depth": 6,
-  "filler_depth": 2,
-  "surface": "minecraft:sand",
-  "filler": "minecraft:sand",
-  "base": "minecraft:sandstone",
+  "template": "skyorigins2core:islands/desert_island",
+  "radius": 8,
+  "depth": 8,
   "biome": "skyorigins2core:desert_isle",
   "blocks_per_tick": 8
 }

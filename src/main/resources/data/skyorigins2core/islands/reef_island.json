@@ -1,15 +1,7 @@
 {
-  "radius": 6,
-  "depth": 6,
-  "filler_depth": 2,
-  "surface": "minecraft:sand",
-  "filler": "minecraft:sand",
-  "base": "minecraft:prismarine",
-  "pool": {
-    "block": "minecraft:water",
-    "radius": 3,
-    "depth": 2
-  },
+  "template": "skyorigins2core:islands/reef_island",
+  "radius": 8,
+  "depth": 10,
   "biome": "skyorigins2core:reef_isle",
   "blocks_per_tick": 8
 }

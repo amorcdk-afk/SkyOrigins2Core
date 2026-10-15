@@ -9,6 +9,7 @@ import com.skyorigins2core.island.IslandDefinition;
 import com.skyorigins2core.island.IslandDefinitions;
 import com.skyorigins2core.island.IslandRegistry;
 import com.skyorigins2core.island.IslandShape;
+import com.skyorigins2core.island.IslandTemplates;
 import com.skyorigins2core.mana.ManaEvents;
 import com.skyorigins2core.mana.PlayerMana;
 import net.minecraft.core.BlockPos;
@@ -20,6 +21,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.gametest.GameTestHolder;
@@ -148,13 +150,13 @@ public class ModGameTests
         List<IslandShape.Placement> plan = IslandShape.plan(reef, center);
         for (IslandShape.Placement placement : plan)
             level.setBlock(placement.pos(), placement.state(), Block.UPDATE_ALL);
-        level.setBlock(center, reef.coreBlock().defaultBlockState(), Block.UPDATE_ALL);
+        level.setBlock(center, reef.coreState(), Block.UPDATE_ALL);
 
         Set<BlockPos> pool = new HashSet<>();
         pool.add(center);
         for (IslandShape.Placement placement : plan)
-            if (placement.state().is(Blocks.WATER))
-                pool.add(placement.pos());
+            if (placement.state().getFluidState().is(FluidTags.WATER))
+                pool.add(placement.pos()); // water, plus waterlogged coral and seagrass
 
         // Give any escaping water time to flow, then look around and below the whole island
         helper.runAfterDelay(60, () -> {
@@ -163,11 +165,32 @@ public class ModGameTests
             {
                 boolean water = level.getFluidState(pos).is(FluidTags.WATER);
                 if (water && !pool.contains(pos))
-                    helper.fail("Water escaped the pool at " + pos.toShortString());
+                    helper.fail("Water escaped the pool at " + pos.subtract(center).toShortString() + " from the centre (" + level.getBlockState(pos) + ")");
                 if (pool.contains(pos) && !level.getFluidState(pos).isSource())
                     helper.fail("Pool block at " + pos.toShortString() + " isn't a water source");
             }
             helper.succeed();
         });
+    }
+
+    // Every island that names a template has that template loaded, with nothing that could fall
+    @GameTest(template = "empty_3x3")
+    public static void islandTemplatesLoad(GameTestHelper helper)
+    {
+        for (String name : List.of("void_island", "desert_island", "crust_island", "reef_island"))
+        {
+            IslandDefinition island = IslandDefinitions.get(ResourceLocation.fromNamespaceAndPath(SkyOrigins2Core.MODID, name));
+            helper.assertTrue(island != null && island.template().isPresent(), name + " has no template");
+            IslandTemplates.Template template = IslandTemplates.get(island.template().get());
+            helper.assertTrue(template != null, name + "'s template " + island.template().get() + " isn't loaded");
+            Set<BlockPos> filled = new HashSet<>();
+            for (IslandShape.Placement block : template.blocks())
+                filled.add(block.pos());
+            filled.add(BlockPos.ZERO);
+            for (IslandShape.Placement block : template.blocks())
+                if (block.state().getBlock() instanceof FallingBlock && !filled.contains(block.pos().below()))
+                    helper.fail(name + " has " + block.state().getBlock() + " with nothing under it at " + block.pos().toShortString());
+        }
+        helper.succeed();
     }
 }
