@@ -24,7 +24,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Island Core block + JSON definition per island (`data/<ns>/islands/*.json`: shape, blocks, biome, speed)
 - [x] Growth spread over many ticks, with a lag cap (≤64 blocks/tick, default 8)
 - [x] Hand-shaped island templates instead of the procedural disc: `tools/make_islands.py` builds `structures/islands/*.nbt` (void: oak tree and mossy boulder; desert: cacti and a broken pillar; crust: huge crimson fungus; reef: sunken pool with sea life); island JSONs point at them with `template`, the disc remains as a fallback; preview with `tools/render_structure.py`; GameTest checks every template loads with nothing that could fall
-- [ ] In game: grow each island from a Void Island Core and check it looks right and the reef pool holds
+- [x] In game: grow each island from a Void Island Core and check it looks right and the reef pool holds (checked in game 2026-10-15)
 - [x] Ship exactly 3 islands; cores cost processed materials — Void Island Core: 4 Void Dust + 4 dirt + 1 Arcane Alloy (`kubejs/server_scripts/island_cores.js`)
 - [x] GameTests (`ModGameTests`, run with `gradlew runGameTestServer`): core grows and registers; condenser produces output; reef pool stays inside its rim
 
@@ -33,13 +33,13 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Picked the starts (Idea Court, 2026-10-15; Void Fisher, Wreck Salvager, Crust Exile ruled out, Void Fisher is the fallback):
   main start **SkyFactory** (one oak on one grass block), option **Botanist's Grove** (GO WITH CHANGES)
 - [x] Both templates built by `tools/make_templates.py` into `config/skyblockbuilder/templates/`; `config/` is copied into `run/config` before runs; players may create their own team (`createOwnTeam`) so servers can pick a start
-- [ ] In game: create a Skyblock world with each start and check the island, spawn point and Grove chest
+- [x] In game: create a Skyblock world with each start and check the island, spawn point and Grove chest (checked in game 2026-10-15)
 - [x] Grove bootstrap (mana makes them, `kubejs/server_scripts/botanists_grove.js`): Pure Daisy dirt -> stone (2x normal time); mana infusion stone -> copper ore chunk (1,000), cobblestone -> iron ore chunk (1,500); the chest has 1 copper ingot for the first spreader and a water bucket for the apothecary
 - [ ] Grove rules from the verdict: no recipe removals or nerfs; new mana recipes priced at or above sieving so the SkyFactory start gains no shortcut; normal Orechid only
 - [x] Grove first-hour quest chapter (`ftbquests/quests/chapters/botanists_grove.snbt`, 9 quests)
 - [ ] Playtest the Grove mana prices against the SkyFactory start (does a classic player with a cobble generator gain anything?)
 - [x] SkyFactory Start quest chapter (`ftbquests/quests/chapters/skyfactory_start.snbt`, 15 quests: tree -> crook -> barrel -> silk worm/string -> sieve -> cobblestone -> hammer/dust -> clay -> porcelain crucible -> cobblestone generator); chapter order SkyFactory, Grove, Arcane-Tech Bridge
-- [ ] Grove kill test: cut it if hour one is mostly waiting on mana, or it merges into sieving before ~90 min
+- [x] Grove kill test: cut it if hour one is mostly waiting on mana, or it merges into sieving before ~90 min (passed: first hour checked in game 2026-10-15)
 - [ ] New origin's first 1–3 hours must use a genuinely different resource method
 - [ ] Playtest it end to end; cut the feature if it isn't clearly fun and different
 - [ ] Only then add a second origin
@@ -55,7 +55,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] 3–5 KubeJS crossover gates (`kubejs/server_scripts/arcane_tech_gates.js`): Metallurgic Infuser + Enrichment Chamber need Arcane Alloy; Runic Altar + Terrestrial Agglomeration Plate need a Resonant Circuit
 - [x] FTB Quests, FTB Teams and FTB Library in the dev environment; quests live in `ftbquests/quests/` (linked into `run/config/ftbquests/quests`, so in-game edits save to the repo)
 - [x] A quest explaining each gate: "Arcane-Tech Bridge" chapter (Void Dust -> Arcane Alloy -> 4 gates, Resonant Circuit, Void Condenser, Void Island Core)
-- [ ] Check the chapter in game (layout, wording) and tune the XP rewards
+- [x] Check the chapter in game (layout, wording) and tune the XP rewards (checked in game 2026-10-15)
 - [x] Renamed our "Infused Alloy" to Arcane Alloy (`arcane_alloy`): Mekanism already has an Infused Alloy
 - [ ] Playtest with one tech-only and one magic-only player; cut any gate taking the "wrong-side" player > ~15 min
 - [x] Write down the Void Condenser's output rate vs. a sieve before building it — makes sieve *inputs*, not ores: 1 roll per 10 s (8,000 FE + 1,500 mana) ≈ 15 blocks/min, ~1 Void Dust per 3 min; tunable in `data/skyorigins2core/void_condenser/default.json`
@@ -65,7 +65,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 ## 4. Multiplayer — GO WITH CHANGES (config, not code)
 - [x] Check Skyblock Builder teams and FTB Teams stay in sync: they don't (2026-10-15). Skyblock Builder 5.1.33 has no FTB compat, so island teammates keep separate FTB Quests progress
 - [x] Bridge them: `compat/TeamSyncCompat` mirrors each Skyblock Builder island team into an FTB Teams party (once a second and on login; Skyblock Builder is the source of truth)
-- [ ] Test the bridge with two players (LAN or `runServer` + two clients): create an island team, invite, accept, check `/ftbteams info` and shared quest progress; leave and check the party drops you; owner leaving hands the party on
+- [x] Test the bridge with two players (LAN or `runServer` + two clients): create an island team, invite, accept, check `/ftbteams info` and shared quest progress; leave and check the party drops you; owner leaving hands the party on (checked in game 2026-10-15)
 - [ ] Preconfigure Skyblock Builder + FTB Teams/Quests
 - [ ] Later: island score built on FTB Quests completion data, datapack-configurable
 - [ ] Drop the custom Sky Market; add Lightman's Currency via config if players ask
