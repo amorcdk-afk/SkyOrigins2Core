@@ -239,6 +239,9 @@ tasks.named('jar', Jar).configure {
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
+            // Other mods depend on com.skyorigins2core:skyorigins2core:<version> (see API.md);
+            // without this the folder name "skyorigins 2 core" would become the artifact name
+            artifactId = mod_id
             artifact jar
         }
     }

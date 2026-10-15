@@ -21,6 +21,7 @@ build
 eclipse
 run
 pack-mods
+mcmodsrepo
 
 # Files from Forge MDK
 forge*changelog.txt

@@ -1,5 +1,8 @@
 package com.skyorigins2core;
 
+import com.skyorigins2core.api.energy.IVoidChargeStorage;
+import com.skyorigins2core.api.energy.VoidCharge;
+import com.skyorigins2core.api.energy.VoidChargeStorage;
 import com.skyorigins2core.api.mana.ManaApi;
 import com.skyorigins2core.condenser.VoidCondenserBlockEntity;
 import com.skyorigins2core.island.IslandDefinition;
@@ -102,6 +105,30 @@ public class ModGameTests
         mana.regenerate(regen * 5);
         int expected = (int) Math.min(max, max - 30 + regen * 5);
         helper.assertTrue(mana.getMana() == expected, "Regen gave " + mana.getMana() + ", expected " + expected);
+        helper.succeed();
+    }
+
+    // The Void Charge API storage respects capacity and per-call limits, and its views and save/load work
+    @GameTest(template = "empty_3x3")
+    public static void voidChargeStorageApi(GameTestHelper helper)
+    {
+        VoidChargeStorage storage = new VoidChargeStorage(1_000, 100, 50);
+        helper.assertTrue(storage.receiveCharge(500, false) == 100, "receive should be capped at maxReceive");
+        helper.assertTrue(storage.receiveCharge(100, true) == 100 && storage.getChargeStored() == 100, "simulated receive changed the storage");
+        helper.assertTrue(storage.extractCharge(500, false) == 50, "extract should be capped at maxExtract");
+        helper.assertTrue(storage.generate(5_000) == 950 && storage.getChargeStored() == 1_000, "generate should fill only to capacity");
+        helper.assertTrue(storage.receiveCharge(10, false) == 0, "a full storage accepted charge");
+        helper.assertTrue(storage.consume(400) && !storage.consume(10_000) && storage.getChargeStored() == 600, "consume is all-or-nothing");
+
+        IVoidChargeStorage in = VoidCharge.receiveOnly(storage);
+        IVoidChargeStorage out = VoidCharge.extractOnly(storage);
+        helper.assertTrue(in.extractCharge(10, false) == 0 && !in.canExtract(), "receive-only view let charge out");
+        helper.assertTrue(out.receiveCharge(10, false) == 0 && !out.canReceive(), "extract-only view let charge in");
+        helper.assertTrue(in.receiveCharge(10, false) == 10 && out.extractCharge(10, false) == 10, "views don't reach the storage");
+
+        VoidChargeStorage copy = new VoidChargeStorage(1_000, 100, 50);
+        copy.deserializeNBT(storage.serializeNBT());
+        helper.assertTrue(copy.getChargeStored() == storage.getChargeStored(), "save/load lost charge");
         helper.succeed();
     }
 

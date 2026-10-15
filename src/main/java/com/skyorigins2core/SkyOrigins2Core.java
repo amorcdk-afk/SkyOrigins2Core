@@ -1,6 +1,7 @@
 package com.skyorigins2core;
 
 import com.mojang.logging.LogUtils;
+import com.skyorigins2core.api.energy.IVoidChargeStorage;
 import com.skyorigins2core.api.mana.ManaAttributes;
 import com.skyorigins2core.condenser.CondenserSettings;
 import com.skyorigins2core.condenser.VoidCondenserBlock;
@@ -28,6 +29,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
@@ -125,6 +127,8 @@ public class SkyOrigins2Core
         context.registerConfig(ModConfig.Type.COMMON, ManaConfig.COMMON_SPEC);
         context.registerConfig(ModConfig.Type.CLIENT, ManaConfig.CLIENT_SPEC);
         ManaEvents.register(modEventBus);
+        // Void Charge: an energy API only (api.energy); machines that use it live in other mods
+        modEventBus.addListener((RegisterCapabilitiesEvent event) -> event.register(IVoidChargeStorage.class));
         modEventBus.addListener((FMLCommonSetupEvent event) -> event.enqueueWork(ModNetwork::register));
 
         // Load island definitions from data packs on server start and /reload

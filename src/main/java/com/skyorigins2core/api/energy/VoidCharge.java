@@ -24,6 +24,28 @@ public final class VoidCharge
                 : blockEntity.getCapability(SkyOriginsCapabilities.VOID_CHARGE, side).resolve();
     }
 
+    // A view that only lets other blocks push charge in, e.g. a battery's input faces
+    public static IVoidChargeStorage receiveOnly(IVoidChargeStorage storage)
+    {
+        return new Restricted(storage, true, false);
+    }
+
+    // A view that only lets other blocks pull charge out, e.g. a generator or a battery's output face
+    public static IVoidChargeStorage extractOnly(IVoidChargeStorage storage)
+    {
+        return new Restricted(storage, false, true);
+    }
+
+    private record Restricted(IVoidChargeStorage storage, boolean receive, boolean extract) implements IVoidChargeStorage
+    {
+        @Override public int receiveCharge(int maxReceive, boolean simulate) { return receive ? storage.receiveCharge(maxReceive, simulate) : 0; }
+        @Override public int extractCharge(int maxExtract, boolean simulate) { return extract ? storage.extractCharge(maxExtract, simulate) : 0; }
+        @Override public int getChargeStored() { return storage.getChargeStored(); }
+        @Override public int getMaxChargeStored() { return storage.getMaxChargeStored(); }
+        @Override public boolean canReceive() { return receive && storage.canReceive(); }
+        @Override public boolean canExtract() { return extract && storage.canExtract(); }
+    }
+
     // Moves up to `amount` VC from `from` into whatever accepts charge on `side` of `pos`. Returns how much moved.
     public static int pushTo(IVoidChargeStorage from, Level level, BlockPos pos, Direction side, int amount)
     {
