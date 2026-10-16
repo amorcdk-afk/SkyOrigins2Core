@@ -10,7 +10,8 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Remove the MDK example block, item, creative tab and demo config
 - [x] Run `.\gradlew.bat genIntellijRuns` (or `genEclipseRuns`) and confirm `runClient` launches
 - [x] Decide the base modlist for 1.20.1 — `MODLIST.md`, downloaded with `tools/download_mods.py`
-- [ ] Work through the open checks in `MODLIST.md` (team sync and sieve coverage done; all-mods launch test left)
+- [ ] Work through the open checks in `MODLIST.md` (team sync, sieve coverage and the server launch test done; client launch test left)
+- [ ] Skyblock Builder logged "Skipping biome filtering as all biomes were filtered out" for the overworld and nether on the full-pack server; check what `world.json5` biome lists should be
 - [ ] Playtest the new sieve rates (metal floors in `tools/make_sieve_rates.py`); SkyOrigins 1's were too low, so err high
 
 ## 1. Island Cores — GO WITH CHANGES

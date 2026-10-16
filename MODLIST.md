@@ -80,5 +80,6 @@ Versions are the newest Forge 1.20.1 files on CurseForge, downloaded and checksu
 
 ## Open checks
 - [x] Do Skyblock Builder teams and FTB Teams stay in sync? No: Skyblock Builder 5.1.33 has no FTB Teams compat (checked its jar, 2026-10-15), so a bridge is needed (see TODO.md)
-- [ ] Load all 39 jars together in a CurseForge profile and confirm the game starts without conflicts
+- [x] Server side (2026-10-16): all 37 server-side jars + skyorigins2core start together on a Forge 47.4.10 server with a Skyblock world, 0 KubeJS errors, 0 failed recipes, all quests, island and start templates loading. Only error: CoFH Core's client-only mixin skipped on the server (harmless). Rerun with `python tools/full_pack_test.py`
+- [ ] Client side: launch the full list (with Embeddium and Oculus) in a CurseForge profile and confirm the game reaches the title screen and loads a world
 - [x] Confirm Ex Deorum's sieve drops cover what Create/Mekanism/Thermal need (2026-10-15): every metal is covered once its mod adds the ore tag (osmium, uranium, tin, lead, silver, nickel, zinc); missing were fluorite, Thermal's apatite/cinnabar/niter/sulfur and Mystical Agriculture's inferium/prosperity, now added, and low metal rates raised (`tools/make_sieve_rates.py` -> `kubejs/server_scripts/sieve_rates.js`)
