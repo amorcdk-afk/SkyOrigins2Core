@@ -27,6 +27,8 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Hand-shaped island templates instead of the procedural disc: `tools/make_islands.py` builds `structures/islands/*.nbt` (void: oak tree and mossy boulder; desert: cacti and a broken pillar; crust: huge crimson fungus; reef: sunken pool with sea life); island JSONs point at them with `template`, the disc remains as a fallback; preview with `tools/render_structure.py`; GameTest checks every template loads with nothing that could fall
 - [x] In game: grow each island from a Void Island Core and check it looks right and the reef pool holds (checked in game 2026-10-15)
 - [x] Ship exactly 3 islands; cores cost processed materials — Void Island Core: 4 Void Dust + 4 dirt + 1 Arcane Alloy (`kubejs/server_scripts/island_cores.js`)
+- [x] Island Cores quest chapter (`ftbquests/quests/chapters/island_cores.snbt`, 6 quests): the core recipe and odds, a visit-the-biome quest per island with its mobs and loot, and Archipelago for all four; unlocks from Arcane Alloy
+- [ ] Check the Island Cores chapter in game
 - [x] GameTests (`ModGameTests`, run with `gradlew runGameTestServer`): core grows and registers; condenser produces output; reef pool stays inside its rim
 
 ## 2. Void Origins — GO WITH CHANGES

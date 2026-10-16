@@ -33,9 +33,7 @@
 		}
 		{
 			dependencies: ["7B2C3D4E5F6A7B10"]
-			description: [
-				"A Crook (sticks) breaks leaves and doubles their sapling drops. It sometimes finds a &eSilk Worm&r too."
-			]
+			description: ["A Crook (sticks) breaks leaves and doubles their sapling drops. It sometimes finds a &eSilk Worm&r too."]
 			id: "7B2C3D4E5F6A7B20"
 			rewards: [{
 				id: "7B2C3D4E5F6A7B21"
@@ -44,7 +42,13 @@
 			}]
 			tasks: [{
 				id: "7B2C3D4E5F6A7B22"
-				item: "exdeorum:crook"
+				item: {
+					Count: 1
+					id: "exdeorum:crook"
+					tag: {
+						Damage: 0
+					}
+				}
 				type: "item"
 			}]
 			title: "Crook"
@@ -99,9 +103,7 @@
 		}
 		{
 			dependencies: ["7B2C3D4E5F6A7B40"]
-			description: [
-				"Compost enough dirt to give yourself room: trees, a sieve and a walkway around them."
-			]
+			description: ["Compost enough dirt to give yourself room: trees, a sieve and a walkway around them."]
 			id: "7B2C3D4E5F6A7B50"
 			rewards: [{
 				id: "7B2C3D4E5F6A7B51"
@@ -142,9 +144,7 @@
 		}
 		{
 			dependencies: ["7B2C3D4E5F6A7B60"]
-			description: [
-				"Harvest fully infested leaves with the Crook for string. 9 string make a String Mesh."
-			]
+			description: ["Harvest fully infested leaves with the Crook for string. 9 string make a String Mesh."]
 			id: "7B2C3D4E5F6A7B70"
 			rewards: [{
 				id: "7B2C3D4E5F6A7B71"
@@ -162,10 +162,11 @@
 			y: 0.0d
 		}
 		{
-			dependencies: ["7B2C3D4E5F6A7B50", "7B2C3D4E5F6A7B70"]
-			description: [
-				"An Oak Sieve with a &eString Mesh&r in it sifts dirt into stone pebbles, seeds and sugar cane."
+			dependencies: [
+				"7B2C3D4E5F6A7B50"
+				"7B2C3D4E5F6A7B70"
 			]
+			description: ["An Oak Sieve with a &eString Mesh&r in it sifts dirt into stone pebbles, seeds and sugar cane."]
 			id: "7B2C3D4E5F6A7B80"
 			rewards: [{
 				id: "7B2C3D4E5F6A7B81"
@@ -183,9 +184,7 @@
 		}
 		{
 			dependencies: ["7B2C3D4E5F6A7B80"]
-			description: [
-				"4 stone pebbles craft a cobblestone. Your first stone tools and a furnace are close now."
-			]
+			description: ["4 stone pebbles craft a cobblestone. Your first stone tools and a furnace are close now."]
 			id: "7B2C3D4E5F6A7B90"
 			rewards: [{
 				id: "7B2C3D4E5F6A7B91"
@@ -204,9 +203,7 @@
 		}
 		{
 			dependencies: ["7B2C3D4E5F6A7B90"]
-			description: [
-				"Hammer cobblestone into gravel, gravel into sand and sand into dust. Each one sieves into different things: gravel gives ore chunks."
-			]
+			description: ["Hammer cobblestone into gravel, gravel into sand and sand into dust. Each one sieves into different things: gravel gives ore chunks."]
 			id: "7B2C3D4E5F6A7BA0"
 			rewards: [{
 				id: "7B2C3D4E5F6A7BA1"
@@ -215,7 +212,13 @@
 			}]
 			tasks: [{
 				id: "7B2C3D4E5F6A7BA2"
-				item: "exdeorum:wooden_hammer"
+				item: {
+					Count: 1
+					id: "exdeorum:wooden_hammer"
+					tag: {
+						Damage: 0
+					}
+				}
 				type: "item"
 			}]
 			title: "Wooden Hammer"
@@ -247,9 +250,7 @@
 		}
 		{
 			dependencies: ["7B2C3D4E5F6A7B40"]
-			description: [
-				"An Oak Crucible melts leaves and saplings into water. Pour it into a barrel, or collect it for a pond."
-			]
+			description: ["An Oak Crucible melts leaves and saplings into water. Pour it into a barrel, or collect it for a pond."]
 			id: "7B2C3D4E5F6A7BC0"
 			rewards: [{
 				id: "7B2C3D4E5F6A7BC1"
@@ -267,10 +268,11 @@
 			y: 4.0d
 		}
 		{
-			dependencies: ["7B2C3D4E5F6A7BB0", "7B2C3D4E5F6A7BC0"]
-			description: [
-				"Put dust into a barrel full of water to make clay. Clay ball + bone meal = porcelain clay."
+			dependencies: [
+				"7B2C3D4E5F6A7BB0"
+				"7B2C3D4E5F6A7BC0"
 			]
+			description: ["Put dust into a barrel full of water to make clay. Clay ball + bone meal = porcelain clay."]
 			id: "7B2C3D4E5F6A7BD0"
 			rewards: [{
 				id: "7B2C3D4E5F6A7BD1"
@@ -288,9 +290,7 @@
 		}
 		{
 			dependencies: ["7B2C3D4E5F6A7BD0"]
-			description: [
-				"Shape porcelain clay into a crucible and fire it in a furnace. Over a torch it melts cobblestone into &6lava&r."
-			]
+			description: ["Shape porcelain clay into a crucible and fire it in a furnace. Over a torch it melts cobblestone into &6lava&r."]
 			id: "7B2C3D4E5F6A7BE0"
 			rewards: [{
 				id: "7B2C3D4E5F6A7BE1"

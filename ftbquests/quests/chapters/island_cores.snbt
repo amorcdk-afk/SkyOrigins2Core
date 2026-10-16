@@ -1,0 +1,144 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "island_cores"
+	group: ""
+	icon: "skyorigins2core:void_island_core"
+	id: "3E1754B76E1CD0D2"
+	order_index: 3
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["5C0A2B7E91D34F20"]
+			description: [
+				"4 Void Dust, 4 dirt and 1 Arcane Alloy make a Void Island Core."
+				""
+				"Place it out in the open void with about 10 blocks of clear space around it (islands reach 8 blocks out and 10 down). It grows the island upwards from below in a few seconds, never replacing your blocks, then becomes the island's top block."
+				""
+				"Which island you get is random: &aVoid&r 2 in 5, &eDesert&r, &cCrimson Crust&r and &bReef&r 1 in 5 each."
+			]
+			id: "100454C105AE7C7F"
+			rewards: [{
+				id: "066D766A8130477C"
+				type: "xp"
+				xp: 100
+			}]
+			subtitle: "Grow a new island"
+			tasks: [{
+				id: "61592813291EDEFB"
+				item: "skyorigins2core:void_island_core"
+				type: "item"
+			}]
+			title: "Void Island Core"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			description: [
+				"A grassy island with its own &aVoid Isle&r biome. Animals spawn here: sheep, pigs, chickens and cows, so this is your first farm."
+				""
+				"At night it gets ordinary monsters: zombies, skeletons, spiders, creepers and endermen (ender pearls)."
+			]
+			id: "4B44DB83B89A9111"
+			rewards: [{
+				id: "12C287BCA1878D4D"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				biome: "skyorigins2core:void_isle"
+				id: "79A6450D0AAA3011"
+				type: "biome"
+			}]
+			title: "Void Island"
+			x: 2.0d
+			y: -3.0d
+		}
+		{
+			description: [
+				"Dunes, cacti and a &eDesert Isle&r biome. Rabbits by day; husks, skeletons, spiders, creepers and endermen by night."
+				""
+				"Cactus gives green dye, and the sand is ready for glass and the sieve."
+			]
+			id: "077D7837AC5AC554"
+			rewards: [{
+				id: "68E0582237141F59"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				biome: "skyorigins2core:desert_isle"
+				id: "3E12F667F993C604"
+				type: "biome"
+			}]
+			title: "Desert Island"
+			x: 2.0d
+			y: -1.0d
+		}
+		{
+			description: [
+				"A slab of the Nether in the void. Its &cCrust Isle&r biome spawns &6blazes&r without a fortress, plus magma cubes and wither skeletons."
+				""
+				"Blaze rods for brewing and fuel, and wither skeleton skulls if you're brave. Bring fire resistance and stay away from the edge."
+			]
+			id: "39E7A8996A4A55E5"
+			rewards: [{
+				id: "221D227565877C24"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				biome: "skyorigins2core:crust_isle"
+				id: "2C72CCDE668BE3ED"
+				type: "biome"
+			}]
+			title: "Crimson Crust Island"
+			x: 2.0d
+			y: 1.0d
+		}
+		{
+			description: [
+				"A sunken pool ringed with sand. Its &bReef Isle&r biome spawns &3guardians&r and drowned in the water."
+				""
+				"Guardians drop prismarine shards and crystals; drowned sometimes drop copper or a trident."
+			]
+			id: "62E8B818ED5FF5F7"
+			rewards: [{
+				id: "5FDBAB267BAE7765"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				biome: "skyorigins2core:reef_isle"
+				id: "185AD76604AED3DD"
+				type: "biome"
+			}]
+			title: "Reef Island"
+			x: 2.0d
+			y: 3.0d
+		}
+		{
+			description: [
+				"Grow and visit every kind of island. Each core is random, so this may take a few."
+				""
+				"Islands are yours to reshape: they keep their biome and their mobs keep spawning."
+			]
+			id: "5DE33E95806D7DE3"
+			rewards: [{
+				id: "2E6BF00078F61A9A"
+				type: "xp"
+				xp: 300
+			}]
+			subtitle: "All four islands"
+			tasks: [{
+				id: "1FEDDC2B143529F7"
+				type: "checkmark"
+			}]
+			title: "Archipelago"
+			x: 4.0d
+			y: 0.0d
+		}
+	]
+	subtitle: ["Grow new islands, each with its own biome and mobs"]
+	title: "Island Cores"
+}

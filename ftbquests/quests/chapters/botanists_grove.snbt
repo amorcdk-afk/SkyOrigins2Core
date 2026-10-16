@@ -100,9 +100,7 @@
 		}
 		{
 			dependencies: ["6A1B2C3D4E5F6A20"]
-			description: [
-				"Petals in the apothecary: 2 brown, 1 red, 1 light gray. The Endoflame burns items dropped next to it (logs, charcoal, coal) into mana."
-			]
+			description: ["Petals in the apothecary: 2 brown, 1 red, 1 light gray. The Endoflame burns items dropped next to it (logs, charcoal, coal) into mana."]
 			id: "6A1B2C3D4E5F6A50"
 			rewards: [{
 				id: "6A1B2C3D4E5F6A51"
@@ -121,9 +119,7 @@
 		}
 		{
 			dependencies: ["6A1B2C3D4E5F6A20"]
-			description: [
-				"Petals: 2 blue, 2 cyan. Plant it next to water and it makes mana slowly, for free. It wilts after a few days, so keep making more."
-			]
+			description: ["Petals: 2 blue, 2 cyan. Plant it next to water and it makes mana slowly, for free. It wilts after a few days, so keep making more."]
 			id: "6A1B2C3D4E5F6A60"
 			rewards: [{
 				id: "6A1B2C3D4E5F6A61"
@@ -142,9 +138,7 @@
 		}
 		{
 			dependencies: ["6A1B2C3D4E5F6A40"]
-			description: [
-				"Livingwood, a petal and a &6copper ingot&r. Your chest has exactly one copper ingot for this; after that, copper comes from mana."
-			]
+			description: ["Livingwood, a petal and a &6copper ingot&r. Your chest has exactly one copper ingot for this; after that, copper comes from mana."]
 			id: "6A1B2C3D4E5F6A70"
 			rewards: [{
 				id: "6A1B2C3D4E5F6A71"
@@ -183,7 +177,10 @@
 			y: 1.0d
 		}
 		{
-			dependencies: ["6A1B2C3D4E5F6A70", "6A1B2C3D4E5F6A80"]
+			dependencies: [
+				"6A1B2C3D4E5F6A70"
+				"6A1B2C3D4E5F6A80"
+			]
 			description: [
 				"In SkyOrigins 2, throwing items into a full enough Mana Pool makes ore:"
 				"- &7Stone&r -> Copper Ore Chunk (1,000 mana)"
