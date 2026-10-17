@@ -11,7 +11,7 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Run `.\gradlew.bat genIntellijRuns` (or `genEclipseRuns`) and confirm `runClient` launches
 - [x] Decide the base modlist for 1.20.1 — `MODLIST.md`, downloaded with `tools/download_mods.py`
 - [ ] Work through the open checks in `MODLIST.md` (team sync, sieve coverage and the server launch test done; client launch test left)
-- [ ] Skyblock Builder logged "Skipping biome filtering as all biomes were filtered out" for the overworld and nether on the full-pack server; check what `world.json5` biome lists should be
+- [x] Void biome (2026-10-17): Skyblock Builder 5.1.33 only filters biomes when its list matches none of a dimension's normal biomes (otherwise it logs "Skipping biome filtering" and keeps them all), so the void was a random mix. The overworld is now the new `void_sky` biome (night monsters, no animals; animals come from Void Islands) via `config/skyblockbuilder/world.json5`; the Nether keeps all its biomes (its warning is expected). Applies to new worlds
 - [ ] Playtest the new sieve rates (metal floors in `tools/make_sieve_rates.py`); SkyOrigins 1's were too low, so err high
 
 ## 1. Island Cores — GO WITH CHANGES
