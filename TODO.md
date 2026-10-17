@@ -54,7 +54,8 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Register 3 items: Void Dust, Arcane Alloy, Resonant Circuit (tagged `forge:dusts/void`, `forge:ingots/arcane_alloy`)
 - [x] Add the tech/magic mods to the dev environment (`devMods` in `build.gradle`, jars from `pack-mods/`): KubeJS, Ex Deorum, Botania, Mekanism, JEI
 - [x] Add Create to the dev environment (2026-10-17): `tools/split_jarjar.py` pulls Flywheel, Ponder and Registrate out of Create's jar into pack-mods/ and writes `create_dev-*.jar` without them; dev server (6/6 GameTests) and dev client (title screen, Flywheel shaders) both load
-- [ ] Create content: recipes, a Create gate in the Arcane-Tech Bridge, quests
+- [x] Create content (2026-10-17): Whisk gate (Arcane Alloy -> Mechanical Mixer -> brass), Void Dust from crushing dust (12%), Resonant Circuit from heated mixing (Arcane Alloy + 2 redstone, same cost as the Infuser); Bridge chapter has a Whisk gate quest and the Resonant Circuit quest accepts either route
+- [ ] Playtest the Create route (does gating the Whisk hold Create back the right amount?)
 - [x] First KubeJS recipes (`kubejs/server_scripts/arcane_tech_bridge.js`): Void Dust from sieving dust (5–30% by mesh), Arcane Alloy from a mana pool (3000 mana), Resonant Circuit from a Metallurgic Infuser (20 redstone)
 - [x] Playtest the chain in game and tune the numbers (played through, numbers fine, 2026-10-15)
 - [x] 3–5 KubeJS crossover gates (`kubejs/server_scripts/arcane_tech_gates.js`): Metallurgic Infuser + Enrichment Chamber need Arcane Alloy; Runic Altar + Terrestrial Agglomeration Plate need a Resonant Circuit

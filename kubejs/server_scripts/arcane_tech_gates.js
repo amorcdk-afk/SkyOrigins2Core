@@ -2,6 +2,7 @@
 // so players can't ignore half the pack. Keep this list short (3-5 gates) and explain each in a quest.
 //   Tech needs magic:  Metallurgic Infuser, Enrichment Chamber  <- Arcane Alloy (mana pool)
 //   Magic needs tech:  Runic Altar, Terrestrial Agglomeration Plate  <- Resonant Circuit (Metallurgic Infuser)
+//   Create needs magic: Whisk (so the Mechanical Mixer, and with it brass)  <- Arcane Alloy
 // Arcane Alloy itself is never gated (it only needs a mana pool), so the chain can't deadlock.
 // Each original recipe is removed and replaced with an otherwise identical one.
 
@@ -63,4 +64,19 @@ ServerEvents.recipes(event => {
         3: 'botania:rune_air',
         8: 'botania:rune_mana',
     }).id('skyorigins2core:gate/terra_plate')
+
+    // Whisk (Create): the top andesite alloy becomes Arcane Alloy. Gates the Mechanical Mixer, and so
+    // brass and everything after it, while early Create (presses, saws, fans, crushing) stays open
+    if (Platform.isLoaded('create')) {
+        event.remove({ id: 'create:crafting/kinetics/whisk' })
+        event.shaped('create:whisk', [
+            ' A ',
+            'SCS',
+            'SSS',
+        ], {
+            A: alloy,
+            C: 'create:andesite_alloy',
+            S: '#forge:plates/iron',
+        }).id('skyorigins2core:gate/whisk')
+    }
 })

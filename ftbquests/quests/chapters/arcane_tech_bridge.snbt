@@ -13,6 +13,8 @@
 				"Sieve &eDust&r from Ex Deorum to find Void Dust."
 				""
 				"Any mesh works, but better meshes find it more often: from 5% with a String Mesh up to 30% with a Netherite Mesh."
+				""
+				"Create players can run dust through &6Crushing Wheels&r instead (12% per dust)."
 			]
 			id: "5C0A2B7E91D34F10"
 			rewards: [{
@@ -98,9 +100,34 @@
 			y: 1.0d
 		}
 		{
-			dependencies: ["5C0A2B7E91D34F30"]
+			dependencies: ["5C0A2B7E91D34F20"]
+			description: [
+				"&6Gate: Create needs magic.&r"
+				""
+				"In SkyOrigins 2 the Whisk's top andesite alloy is replaced with &dArcane Alloy&r. No Whisk, no Mechanical Mixer, and no brass: early Create (presses, saws, fans, crushing wheels) stays open, but its middle game needs a mana pool."
+			]
+			id: "5C0A2B7E91D34FA0"
+			rewards: [{
+				id: "5C0A2B7E91D34FA1"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "5C0A2B7E91D34FA2"
+				item: "create:whisk"
+				type: "item"
+			}]
+			title: "Whisk"
+			x: 4.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["5C0A2B7E91D34F30", "5C0A2B7E91D34FA0"]
+			dependency_requirement: "one_completed"
 			description: [
 				"Put Arcane Alloy in a Metallurgic Infuser with &credstone&r (20 infuse units) to make a Resonant Circuit."
+				""
+				"Or the Create way: Arcane Alloy and 2 redstone in a &6Mechanical Mixer&r over a heated Blaze Burner."
 				""
 				"Resonant Circuits are the tech half of the bridge: Botania's altars below need them."
 			]

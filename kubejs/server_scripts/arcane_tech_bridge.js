@@ -2,6 +2,8 @@
 //   Void Dust        <- sieving Ex Deorum dust (skyblock core loop)
 //   Arcane Alloy     <- Void Dust in a Botania mana pool (magic)
 //   Resonant Circuit <- Arcane Alloy in a Mekanism Metallurgic Infuser with redstone (tech)
+// Create players get their own routes: crushing wheels find Void Dust in dust, and a heated Mechanical
+// Mixer makes Resonant Circuits (the Mixer itself needs Arcane Alloy, see arcane_tech_gates.js).
 // Formats copied from the mods' own 1.20.1 recipes. Tune numbers here; /reload applies changes.
 
 ServerEvents.recipes(event => {
@@ -39,4 +41,22 @@ ServerEvents.recipes(event => {
         itemInput: { ingredient: { tag: 'forge:ingots/arcane_alloy' } },
         output: { item: 'skyorigins2core:resonant_circuit' },
     }).id('skyorigins2core:metallurgic_infusing/resonant_circuit')
+
+    if (Platform.isLoaded('create')) {
+        // Void Dust: crushing wheels, a little below a good sieve mesh since they run unattended
+        event.custom({
+            type: 'create:crushing',
+            ingredients: [{ item: 'exdeorum:dust' }],
+            processingTime: 150,
+            results: [{ item: 'skyorigins2core:void_dust', chance: 0.12 }],
+        }).id('skyorigins2core:crushing/void_dust')
+
+        // Resonant Circuit: same cost as the Metallurgic Infuser (20 redstone units = 2 redstone dust)
+        event.custom({
+            type: 'create:mixing',
+            heatRequirement: 'heated',
+            ingredients: [{ tag: 'forge:ingots/arcane_alloy' }, { tag: 'forge:dusts/redstone' }, { tag: 'forge:dusts/redstone' }],
+            results: [{ item: 'skyorigins2core:resonant_circuit' }],
+        }).id('skyorigins2core:mixing/resonant_circuit')
+    }
 })
