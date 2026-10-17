@@ -14,6 +14,8 @@ Usage (PowerShell):
 
 --only downloads just those slugs (plus their dependencies), e.g.
     python tools/download_mods.py --only ftb-quests-forge,ftb-teams-forge
+
+After downloading Create, run tools/split_jarjar.py so the dev game can load it.
 """
 
 import hashlib

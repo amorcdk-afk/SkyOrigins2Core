@@ -167,7 +167,8 @@ repositories {
 // Mods loaded alongside ours in runClient/runServer/runGameTestServer, to build and test the Arcane-Tech
 // Bridge recipes. Each entry is a file-name prefix in pack-mods/ (git-ignored, filled by
 // tools/download_mods.py); missing jars are skipped, so the mod still builds without them.
-// Create is left out: its jar bundles Flywheel and Ponder, which fg.deobf can't remap inside the jar.
+// Create bundles Flywheel, Ponder and Registrate inside its jar, which fg.deobf can't remap there;
+// tools/split_jarjar.py writes them out as separate jars plus create_dev-*.jar (Create without them).
 def devMods = [
         'kubejs-forge', 'rhino-forge', 'architectury',     // KubeJS recipe scripts
         'exdeorum',                                         // sieving (Void Dust)
@@ -176,6 +177,7 @@ def devMods = [
         'jei-1.20.1', 'mezz_config',                        // recipe viewer
         'ftb-quests-forge', 'ftb-teams-forge', 'ftb-library-forge',  // quest book (gate quests)
         'SkyblockBuilder', 'LibX',                         // skyblock worlds, islands and start templates (Void Origins)
+        'create_dev', 'flywheel-forge', 'Ponder-Forge', 'Registrate',   // Create (run tools/split_jarjar.py first)
 ]
 
 dependencies {
