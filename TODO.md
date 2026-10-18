@@ -82,6 +82,14 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Publish to local maven with `gradlew publish` (`mcmodsrepo/`, artifact `com.skyorigins2core:skyorigins2core`)
 - [x] In game: mana bar sits correctly with hearts/armor/hunger and survives death and relog (checked 2026-10-15)
 
+## New mods (added 2026-10-18)
+- [x] Added AE2, Storage Drawers, Sophisticated Backpacks, Farmer's Delight, Industrial Foregoing, Mystical Agradditions, FTB Chunks, FTB Ultimine and QoL/performance mods (see `MODLIST.md`); full-pack server starts with 54 jars, 0 KubeJS errors, 0 failed recipes
+- [x] AE2 Inscriber Presses craftable (Resonant Circuit); Farmer's Delight crops from sieving dirt
+- [ ] End access: there's no stronghold in a void world, so no End portal (Mystical Agradditions' dragon egg chunks, elytra, shulkers). Decide: craftable End Portal Frames, or a quest reward
+- [ ] FTB Chunks defaults (claim limits, protection, whether island teams auto-claim their island)
+- [ ] Quests for the new mods (AE2 presses, Farmer's Delight crops, Industrial Foregoing)
+- [ ] Watch Industrial Foregoing's ore laser drill against the sieve rates
+
 ## 5. Later / after release
 - [ ] Sky Events, trimmed: meteors only, landing as mini-islands in open void, no block damage, ore capped ~1 tier above current sieving. No damaging storms
 - [ ] Prestige points from quest milestones, ~5 perks, same world (no reset). Store points per player so a real Ascension add-on stays possible

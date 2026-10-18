@@ -46,8 +46,15 @@ MODS = [
     "the-twilight-forest", "blue-skies",
     # Progression and scripting
     "ftb-quests-forge", "ftb-teams-forge", "kubejs",
+    # Storage, food and automation (added 2026-10-18)
+    "applied-energistics-2", "storage-drawers", "sophisticated-backpacks", "farmers-delight",
+    "industrial-foregoing", "mystical-agradditions",
+    # Multiplayer
+    "ftb-chunks-forge", "ftb-ultimine-forge",
     # QoL and performance
     "jei", "jade", "embeddium", "oculus", "ferritecore", "modernfix",
+    "fast-leaf-decay", "appleskin", "mouse-tweaks", "inventory-sorter", "controlling", "clumps",
+    "entityculling",  # distribution disabled: the CurseForge app installs it, this script can't
 ]
 
 

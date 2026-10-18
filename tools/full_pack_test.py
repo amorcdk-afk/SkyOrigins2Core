@@ -4,7 +4,7 @@ scripts and config, wait until it's up (or crashes), print a summary, then stop 
     python tools/full_pack_test.py            # reuse mods already in full-pack/server/mods
     python tools/full_pack_test.py --download # (re)download the mod list first (needs CF_API_KEY)
 
-Everything lives in full-pack/ (git-ignored). Client-only mods (Embeddium, Oculus) are left out,
+Everything lives in full-pack/ (git-ignored). Client-only mods (Embeddium, Oculus, Mouse Tweaks, Controlling, Entity Culling) are left out,
 since a dedicated server can't load them; check those by launching the pack in a client.
 Forge's installer comes from Forge's official maven.
 """
@@ -24,7 +24,7 @@ SERVER = os.path.join(PACK, "server")
 MODS = os.path.join(SERVER, "mods")
 FORGE = "1.20.1-47.4.10"
 INSTALLER_URL = f"https://maven.minecraftforge.net/net/minecraftforge/forge/{FORGE}/forge-{FORGE}-installer.jar"
-CLIENT_ONLY = ("embeddium-", "oculus-")
+CLIENT_ONLY = ("embeddium-", "oculus-", "MouseTweaks-", "Controlling-", "entityculling-")
 GRADLEW = os.path.join(ROOT, "gradlew.bat" if os.name == "nt" else "gradlew")
 
 

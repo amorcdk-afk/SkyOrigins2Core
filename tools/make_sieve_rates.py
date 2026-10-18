@@ -50,6 +50,11 @@ NEW_DROPS = [
     ("thermal", "thermal:sulfur", "exdeorum:crushed_netherrack", [0.08, 0.09, 0.10, 0.12, 0.14, 0.16]),
     ("mysticalagriculture", "mysticalagriculture:inferium_essence", "minecraft:dirt", [0.05, 0.06, 0.07, 0.08, 0.10, 0.12]),
     ("mysticalagriculture", "mysticalagriculture:prosperity_shard", "minecraft:gravel", [0.03, 0.04, 0.05, 0.06, 0.07, 0.08]),
+    # Farmer's Delight crops only grow wild in world generation
+    ("farmersdelight", "farmersdelight:cabbage_seeds", "minecraft:dirt", [0.04, 0.04, 0.05, 0.05, 0.06, 0.06]),
+    ("farmersdelight", "farmersdelight:tomato_seeds", "minecraft:dirt", [0.04, 0.04, 0.05, 0.05, 0.06, 0.06]),
+    ("farmersdelight", "farmersdelight:onion", "minecraft:dirt", [0.03, 0.03, 0.04, 0.04, 0.05, 0.05]),
+    ("farmersdelight", "farmersdelight:rice", "minecraft:dirt", [0.03, 0.03, 0.04, 0.04, 0.05, 0.05]),
 ]
 
 
