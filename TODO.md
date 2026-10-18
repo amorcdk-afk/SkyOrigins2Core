@@ -86,7 +86,8 @@ Order follows the Idea Court verdicts (2026-10-07). Each feature has a "prove it
 - [x] Added AE2, Storage Drawers, Sophisticated Backpacks, Farmer's Delight, Industrial Foregoing, Mystical Agradditions, FTB Chunks, FTB Ultimine and QoL/performance mods (see `MODLIST.md`); full-pack server starts with 54 jars, 0 KubeJS errors, 0 failed recipes
 - [x] AE2 Inscriber Presses craftable (Resonant Circuit); Farmer's Delight crops from sieving dirt
 - [ ] End access: there's no stronghold in a void world, so no End portal (Mystical Agradditions' dragon egg chunks, elytra, shulkers). Decide: craftable End Portal Frames, or a quest reward
-- [ ] FTB Chunks defaults (claim limits, protection, whether island teams auto-claim their island)
+- [x] FTB Chunks defaults reviewed (2026-10-18): kept as shipped (500 claims and 25 force-loaded chunks per team, protection for allies only, explosions off in claims); islands are 8,192 blocks apart so limits never collide. Teams claim their island themselves
+- [x] Cleanup: removed the Forge template files (README.txt, changelog.txt, CREDITS.txt, Forge's LGPL LICENSE.txt), dev KubeJS scripts are synced (no stale example.js), Forge's mod update check is off for the pack (`config/fml.toml`)
 - [ ] Quests for the new mods (AE2 presses, Farmer's Delight crops, Industrial Foregoing)
 - [ ] Watch Industrial Foregoing's ore laser drill against the sieve rates
 

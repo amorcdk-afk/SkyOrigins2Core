@@ -49,7 +49,7 @@ def prepare(download):
     for jar in glob.glob(os.path.join(ROOT, "build", "libs", "skyorigins2core-*.jar")):
         shutil.copy(jar, MODS)
 
-    for src, dst in (("kubejs", "kubejs"), (os.path.join("config", "skyblockbuilder"), os.path.join("config", "skyblockbuilder")),
+    for src, dst in (("kubejs", "kubejs"), ("config", "config"),
                      (os.path.join("ftbquests", "quests"), os.path.join("config", "ftbquests", "quests"))):
         shutil.copytree(os.path.join(ROOT, src), os.path.join(SERVER, dst), dirs_exist_ok=True)
 
