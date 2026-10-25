@@ -5,7 +5,7 @@ Use only the classes in `com.skyorigins2core.api`; everything else in the mod ca
 
 | System | What it is | Where |
 |---|---|---|
-| Player mana | Every player has a mana pool that regenerates, shown as a blue bar above the XP bar | `api.mana` |
+| Player mana | Every player has a mana pool that regenerates, shown as a labelled blue bar right of the hotbar | `api.mana` |
 | Void Charge (VC) | An energy unit (1 VC = 4 FE) with a capability and a ready-made storage class. This mod adds no machines; yours do | `api.energy` |
 
 ## 1. Depend on SkyOrigins 2 Core

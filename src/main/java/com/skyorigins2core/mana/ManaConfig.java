@@ -27,7 +27,7 @@ public final class ManaConfig
 
         ForgeConfigSpec.Builder client = new ForgeConfigSpec.Builder();
         client.push("hud");
-        SHOW_BAR_WHEN_FULL = client.comment("Show the mana bar when mana is full. Off hides it at full mana, which moves hearts and hunger down when it hides")
+        SHOW_BAR_WHEN_FULL = client.comment("Show the mana bar (right of the hotbar) when mana is full. Off hides it whenever mana is full")
                 .define("showManaBarWhenFull", true);
         client.pop();
         CLIENT_SPEC = client.build();

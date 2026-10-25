@@ -1,6 +1,6 @@
 """GUI textures for SkyOrigins 2 Core.
 
-mana_bar.png (182x10): the mana bar, same size and style as the vanilla XP bar but blue.
+mana_bar.png (64x10): the mana bar beside the hotbar, styled like the vanilla XP bar but blue and shorter.
 Rows 0-4 are the empty background, rows 5-9 the fill.
 
 Usage: python tools/gui_art.py src/main/resources/assets/skyorigins2core/textures/gui [preview.png]
@@ -10,7 +10,7 @@ import struct
 import sys
 import zlib
 
-WIDTH, BAR = 182, 5
+WIDTH, BAR = 64, 5
 OUTLINE = (12, 14, 30, 255)
 EMPTY_DARK = (26, 32, 58, 255)
 EMPTY = (40, 50, 86, 255)
@@ -45,8 +45,8 @@ def bar(empty):
                 row.append(CLEAR)
                 continue
             edge = shape == "edge" or x == 0 or x == WIDTH - 1 or y == 0 or y == BAR - 1
-            # Segment notches every 20px, like the dividers on the XP bar
-            notch = x % 20 == 0 and 0 < x < WIDTH - 1 and 0 < y < BAR - 1
+            # Segment notches every 16px (a quarter of the bar), like the dividers on the XP bar
+            notch = x % 16 == 0 and 0 < x < WIDTH - 1 and 0 < y < BAR - 1
             if edge:
                 row.append(OUTLINE)
             elif empty:
