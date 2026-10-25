@@ -1,0 +1,158 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "beyond_the_void"
+	group: ""
+	icon: "minecraft:end_portal_frame"
+	id: "693B456975B8459C"
+	order_index: 4
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["7B2C3D4E5F6A7BE0"]
+			description: [
+				"Melt cobblestone into lava in a Porcelain Crucible, pour it out and pour water onto it: each lava source becomes obsidian."
+				""
+				"A Nether portal needs 10 (14 with corners)."
+			]
+			id: "33D27B91C7ADAFFD"
+			rewards: [{
+				id: "4FF45E7D37D6F7C6"
+				type: "xp"
+				xp: 50
+			}]
+			subtitle: "Lava meets water"
+			tasks: [{
+				count: 10L
+				id: "74316E37495E896E"
+				item: "minecraft:obsidian"
+				type: "item"
+			}]
+			title: "Obsidian"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			description: [
+				"Build a 4x5 obsidian frame and light it with flint and steel."
+				""
+				"The Nether is a void too: if there's nowhere to stand, the portal makes a small obsidian platform. Bring blocks to build on."
+			]
+			id: "00259ED0001CDB7D"
+			rewards: [{
+				id: "769F84CDDFC1AFD4"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				dimension: "minecraft:the_nether"
+				id: "31639119940C4CF1"
+				type: "dimension"
+			}]
+			title: "The Nether"
+			x: 2.0d
+			y: -1.0d
+		}
+		{
+			description: [
+				"Endermen spawn at night on islands and platforms in the Void Sky, and on Void and Desert Islands."
+				""
+				"You need a lot: 36 for the portal frames and 12 more for the eyes."
+			]
+			id: "5F4B5474F2F2F2C7"
+			rewards: [{
+				id: "0ECFD1EAEEC189DD"
+				type: "xp"
+				xp: 50
+			}]
+			tasks: [{
+				count: 24L
+				id: "67D76951CB89025F"
+				item: "minecraft:ender_pearl"
+				type: "item"
+			}]
+			title: "Ender Pearls"
+			x: 2.0d
+			y: 1.0d
+		}
+		{
+			description: ["Ender pearl + blaze powder. Blazes spawn on the &cCrimson Crust Island&r, no fortress needed."]
+			id: "45AD541B22F6B42A"
+			rewards: [{
+				id: "26CE1AB5B48A46CA"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				count: 12L
+				id: "70E0097B4B40E1BB"
+				item: "minecraft:ender_eye"
+				type: "item"
+			}]
+			title: "Eyes of Ender"
+			x: 4.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["5C0A2B7E91D34F20"]
+			description: [
+				"A void world has no stronghold, so in SkyOrigins 2 End Portal Frames are crafted: 5 obsidian, 3 ender pearls and an &dArcane Alloy&r each."
+				""
+				"Lay out 12 in a ring around a 3x3 hole (the corners stay empty). Stand in the hole and place each frame while looking outward, so they all face inward, then add an Eye of Ender to each."
+			]
+			id: "7123D7E8E97A938A"
+			rewards: [{
+				id: "06124FE32C74F704"
+				type: "xp"
+				xp: 150
+			}]
+			subtitle: "There is no stronghold"
+			tasks: [{
+				count: 12L
+				id: "543B300C07F03DD8"
+				item: "minecraft:end_portal_frame"
+				type: "item"
+			}]
+			title: "End Portal Frames"
+			x: 4.0d
+			y: -1.0d
+		}
+		{
+			description: ["The End's main island is still there, dragon and all; everything around it is void."]
+			id: "32042E883EC7C1BB"
+			rewards: [{
+				id: "354E64212954D55E"
+				type: "xp"
+				xp: 200
+			}]
+			tasks: [{
+				dimension: "minecraft:the_end"
+				id: "474C784F8598D6E0"
+				type: "dimension"
+			}]
+			title: "The End"
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			description: ["Defeat the Ender Dragon. Its gateways lead out to the outer void, where End Cities still generate: elytra and shulker boxes wait there."]
+			id: "0D118AF485E7072B"
+			rewards: [{
+				id: "7AF5D96153642927"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [{
+				entity: "minecraft:ender_dragon"
+				id: "0B85656950CC4CDE"
+				type: "kill"
+				value: 1L
+			}]
+			title: "Free the End"
+			x: 8.0d
+			y: 0.0d
+		}
+	]
+	subtitle: ["The Nether, and an End with no stronghold"]
+	title: "Beyond the Void"
+}

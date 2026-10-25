@@ -122,7 +122,10 @@
 			y: 3.0d
 		}
 		{
-			dependencies: ["5C0A2B7E91D34F30", "5C0A2B7E91D34FA0"]
+			dependencies: [
+				"5C0A2B7E91D34F30"
+				"5C0A2B7E91D34FA0"
+			]
 			dependency_requirement: "one_completed"
 			description: [
 				"Put Arcane Alloy in a Metallurgic Infuser with &credstone&r (20 infuse units) to make a Resonant Circuit."
